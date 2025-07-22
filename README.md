@@ -65,16 +65,16 @@ http://localhost:4200
 
 
 ✨ Capturas de pantalla
-![Home](screenshots/home.jpg)
+![Home](src/assets/screenshots/home.jpg)
 
 ### ➕ Formulario de agregado
-![Add Form](screenshots/add-form.jpg)
+![Add Form](src/assets/screenshots/add-form.jpg)
 
 ### 🗑️ Formulario de eliminación
-![Delete Form](screenshots/delete-form.jpg)
+![Delete Form](src/assets/screenshots/delete-form.jpg)
 
 ### ✏️ Formulario de edición
-![Edit Form](screenshots/edit-form1.jpg) (screenshots/edit-form2.jpg)
+![Edit Form](src/assets/screenshots/edit-form1.jpg) (screenshots/edit-form2.jpg)
 
 
 ✅ Estado actual
