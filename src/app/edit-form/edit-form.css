@@ -1,0 +1,31 @@
+h2{
+    text-decoration: underline;
+}
+
+.search-form, .edit-form{
+    max-width: 850px;
+    margin-bottom: 40px;
+    padding: 20px;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #b854d633;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-bottom: 15px;
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #b854d688;
+    color: #FFFA;
+
+    &:hover{
+        background-color: #b854d6CC;
+        color: #FFFF;
+    }
+}

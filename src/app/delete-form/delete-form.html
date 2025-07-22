@@ -1,0 +1,30 @@
+<div class="delete-form-container">
+    
+    <form [formGroup]="studentForm" (ngSubmit)="onDelete()" class="delete-form">
+        <h2>Eliminar Estudiante</h2>
+        <div class="form-row">
+            <mat-form-field appearance="fill">
+                <mat-label>DNI</mat-label>
+                <input matInput formControlName="dni" />
+                <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched" Class="error">
+                    "DNI" es requerido
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Descripción</mat-label>
+                <input matInput formControlName="descripcion" />
+                <div *ngIf="studentForm.get('descripcion')?.invalid && studentForm.get('descripcion')?.touched" class="error">
+                    "Descripcion" es requerido
+                </div>
+            </mat-form-field>
+        </div>
+
+        <button type="submit" [disabled]="studentForm.invalid">
+            Eliminar
+        </button>
+    </form>
+
+</div>
+
+{{ studentForm.value | json }}

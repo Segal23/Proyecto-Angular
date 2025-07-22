@@ -1,0 +1,63 @@
+<div class="add-form">
+    <h2>Añadir estudiantes</h2>
+
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-row">
+            <mat-form-field appearance="fill">
+                <mat-label>DNI</mat-label>
+                <input matInput formControlName="dni" />
+                <div *ngIf="studentForm.get('dni')?.invalid && studentForm.get('dni')?.touched" Class="error">
+                    "DNI" es requerido
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" />
+                <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" Class="error">
+                    "Nombre" es requerido
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="fill">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="surname" />
+                <div *ngIf="studentForm.get('surname')?.invalid && studentForm.get('surname')?.touched" Class="error">
+                    "Apellido" es requerido
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="fill">
+                <mat-label>Edad</mat-label>
+                <input matInput formControlName="age" />
+                <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" Class="error">
+                    "Edad" es requerido
+                </div>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Prmedio</mat-label>
+                <input matInput formControlName="average" />
+                <div *ngIf="studentForm.get('average')?.invalid && studentForm.get('average')?.touched" Class="error">
+                    "Edad" es requerido
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <button type="submit" [disabled]="studentForm.invalid" class="submit-btn">Añadir Estudiante</button>
+            <button type="button" (click)="onReset()" class="reset-btn">Limpiar Formulario</button>
+        </div>
+    
+    </form>
+
+</div>
+
+{{ studentForm.value | json }}

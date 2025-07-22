@@ -1,0 +1,31 @@
+.navbar{
+    border: none;
+    background-color: #7cdada;;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: start;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    h2{
+        margin: 10px 25px;
+        text-decoration: underline;
+    }
+
+    ul{
+        list-style: none;
+        cursor: pointer;
+        font-size: 16px;
+        
+        li{
+            margin: 5px 0;
+            color: #1234A2;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            &:hover{
+                color: #000A;
+                font-size: 18px;
+            }
+        }
+    }
+}
+

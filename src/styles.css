@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { min-height: 100vh; }
+body { 
+        margin: 0; 
+        font-family: Roboto, "Helvetica Neue", sans-serif; 
+        background-color: #c1d0dd;
+    }
+
+
+.mat-mdc-snackbar-surface{
+    background: linear-gradient(50deg, #7cdada, #74406788) !important; /*#4caf91*/
+    color: #000 !important;
+
+    .mat-mdc-snack-bar-label{
+        color: #000 !important;
+        font-size: 16px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
+    }
+}
+
+.mat-mdc-button {
+    color: #000 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}

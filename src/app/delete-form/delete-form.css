@@ -1,0 +1,44 @@
+.delete-form {
+    max-width: 850px;
+    margin-bottom: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #b854d633;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        text-decoration: underline;
+    }
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+mat-form-field {
+    flex: 1;
+    min-width: 200px;
+}
+
+button {
+    align-self: center;
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #b854d688;
+    color: #FFFA;
+
+    &:hover{
+        background-color: #b854d6CC;
+        color: #FFFF;
+    }
+}
