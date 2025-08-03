@@ -2,6 +2,7 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { CursosAPI } from './cursos-api';
 import { Course } from '../../shared/entities';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,12 +12,11 @@ import { Course } from '../../shared/entities';
   styleUrl: './cursos.css'
 })
 export class Cursos {
+  cursos$!: Observable<Course[]>;
 
-    cursos! : Course[];
-  
-    constructor(private CursosAPI: CursosAPI) {}
-  
-    ngOnInit() {
-      this.CursosAPI.getCursos().subscribe(cursos => {this.cursos = cursos})
-    }
+  constructor(private CursosAPI: CursosAPI) {}
+
+  ngOnInit() {
+    this.cursos$ = this.CursosAPI.getCursos();
+  }
 }

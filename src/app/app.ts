@@ -24,39 +24,39 @@ export class App implements OnInit {
   activeSection = "students";
 
   constructor(private http: HttpClient) {}
+  ngOnInit(): void {}
+  // ngOnInit(): void {
+  //   this.http.get<Student[]>('mocks/students.json').subscribe(data => {
+  //     this.students = data;
+  //   }, error => {
+  //     console.error('Error fetching data:', error);
+  //   });
+  // }
 
-  ngOnInit(): void {
-    this.http.get<Student[]>('mocks/students.json').subscribe(data => {
-      this.students = data;
-    }, error => {
-      console.error('Error fetching data:', error);
-    });
-  }
+  // addStudent(student: Student) {
+  //   this.students = [...this.students, student];
+  // }
 
-  addStudent(student: Student) {
-    this.students = [...this.students, student];
-  }
+  // deleteStudent(dni: string): boolean {
+  //   const index = this.students.findIndex(student => student.dni.toString() === dni);
+  //   if (index !== -1) {
+  //     this.students.splice(index, 1);
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
-  deleteStudent(dni: string): boolean {
-    const index = this.students.findIndex(student => student.dni.toString() === dni);
-    if (index !== -1) {
-      this.students.splice(index, 1);
-      return true;
-    }
-    return false;
-  }
-
-  updateStudent(updated: Student) {
-    const updatedDni = typeof updated.dni === 'string' ? Number(updated.dni) : updated.dni;
-    const index = this.students.findIndex(s => s.dni === updatedDni);
-    if (index !== -1) {
-      updated.dni = updatedDni;
-      this.students[index] = updated;
-      this.students = [...this.students]; 
-      console.log('Estudiante actualizado:', updated);
-    } else {
-      console.warn('No se encontró estudiante para actualizar con DNI:', updatedDni);
-    }
-  }
+  // updateStudent(updated: Student) {
+  //   const updatedDni = typeof updated.dni === 'string' ? Number(updated.dni) : updated.dni;
+  //   const index = this.students.findIndex(s => s.dni === updatedDni);
+  //   if (index !== -1) {
+  //     updated.dni = updatedDni;
+  //     this.students[index] = updated;
+  //     this.students = [...this.students]; 
+  //     console.log('Estudiante actualizado:', updated);
+  //   } else {
+  //     console.warn('No se encontró estudiante para actualizar con DNI:', updatedDni);
+  //   }
+  // }
   
 }

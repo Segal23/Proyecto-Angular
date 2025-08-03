@@ -1,10 +1,8 @@
 
 <p>alumnos works!</p>
 
-<div *ngIf="alumnos; else loading">
-
-{{ alumnos | json }}
-
+<div *ngIf="alumnos$ | async as alumnos; else loading">
+    {{ alumnos | json }}
 </div>
 
 <ng-template #loading>

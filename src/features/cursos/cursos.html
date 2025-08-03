@@ -1,11 +1,9 @@
 <p>cursos works!</p>
 
-<div *ngIf="cursos; else loading">
-
+<div *ngIf="cursos$ | async as cursos; else loading">
     {{ cursos | json }}
-    
-    </div>
-    
-    <ng-template #loading>
-        <p>Loading...</p>
-    </ng-template>
+</div>
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>

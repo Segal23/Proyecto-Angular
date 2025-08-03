@@ -2,6 +2,7 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../shared/entities';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-alumnos',
@@ -10,12 +11,11 @@ import { Student } from '../../shared/entities';
   styleUrl: './alumnos.css'
 })
 export class Alumnos {
-
-  alumnos! : Student[];
+  alumnos$!: Observable<Student[]>;
 
   constructor(private AlumnosAPI: AlumnosAPI) {}
 
   ngOnInit() {
-    this.AlumnosAPI.getAlumnos().subscribe(alumnos => {this.alumnos = alumnos})
+    this.alumnos$ = this.AlumnosAPI.getAlumnos();
   }
 }
