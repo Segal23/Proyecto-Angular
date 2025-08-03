@@ -1,1 +1,11 @@
 <p>cursos works!</p>
+
+<div *ngIf="cursos; else loading">
+
+    {{ cursos | json }}
+    
+    </div>
+    
+    <ng-template #loading>
+        <p>Loading...</p>
+    </ng-template>

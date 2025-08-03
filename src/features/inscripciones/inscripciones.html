@@ -1,1 +1,11 @@
 <p>inscripciones works!</p>
+
+<div *ngIf="inscripciones; else loading">
+
+    {{ inscripciones | json }}
+    
+    </div>
+    
+    <ng-template #loading>
+        <p>Loading...</p>
+    </ng-template>

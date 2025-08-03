@@ -1,7 +1,7 @@
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../shared/entities';
-import { CommonModule, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-alumnos',

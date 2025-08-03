@@ -1,6 +1,11 @@
 export enum RoutePaths {
     ALUMNOS = 'alumnos',
     CURSOS = 'cursos',
-    INCRIPCIONES = 'inscripciones',
+    INSCRIPCIONES = 'inscripciones'
+}
+
+export enum ApiPaths{
+    COURSES = 'courses',
+    INSCRIPTIONS = 'inscriptions',
     STUDENTS = 'students',
 }

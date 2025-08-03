@@ -72,105 +72,139 @@
             "average": 9.3
         }
     ],
-    "cursos":
+    "courses":
     [
         {
             "name": "Matemáticas",
             "code": "MAT101",
-            "credits": 5
+            "credits": 5,
+            "description": "Curso introductorio a las matemáticas básicas."
+
         },
         {
             "name": "Física",
             "code": "FIS102",
-            "credits": 4
+            "credits": 4,
+            "description": "Fundamentos de la física clásica y moderna."
         },
         {
             "name": "Química",
             "code": "QUI103",
-            "credits": 3
+            "credits": 3,
+            "description": "Introducción a la química orgánica e inorgánica."
         },
         {
             "name": "Programación",
             "code": "PRO104",
-            "credits": 6
+            "credits": 6,
+            "description": "Curso de programación básica en Python."
         },
         {
             "name": "Historia",
             "code": "HIS105",
-            "credits": 2
+            "credits": 2,
+            "description": "Historia universal desde la antigüedad hasta la modernidad."
         }
     ],
-    "inscripciones":
+    "inscriptions":
     [
         {
             "studentDNI": 21354870,
             "courseCode": "MAT101",
-            "grade": 8.0
+            "grade": 8.0,
+            "status": "approved",
+            "enrollmentDate": "2023-01-15"
         },
         {
             "studentDNI": 12345678,
             "courseCode": "FIS102",
-            "grade": 9.5
+            "grade": 9.5,
+            "status": "approved",
+            "enrollmentDate": "2023-02-20"
         },
         {
             "studentDNI": 87654321,
             "courseCode": "QUI103",
-            "grade": 7.0
+            "grade": 7.0,
+            "status": "approved",
+            "enrollmentDate": "2023-03-10"
         },
         {
             "studentDNI": 11223344,
             "courseCode": "PRO104",
-            "grade": 8.5
+            "grade": 8.5,
+            "status": "approved",
+            "enrollmentDate": "2023-04-05"
         },
         {
             "studentDNI": 44332211,
             "courseCode": "HIS105",
-            "grade": 9.0
+            "grade": 9.0,
+            "status": "approved",
+            "enrollmentDate": "2023-05-12"
         },
         {
             "studentDNI": 98765432,
             "courseCode": "MAT101",
-            "grade": 8.3
+            "grade": 8.3,
+            "status": "approved",
+            "enrollmentDate": "2023-06-18"
         },
         {
             "studentDNI": 13579246,
             "courseCode": "FIS102",
-            "grade": 7.5
+            "grade": 7.5,
+            "status": "approved",
+            "enrollmentDate": "2023-07-22"
         },
         {
             "studentDNI": 24681357,
             "courseCode": "QUI103",
-            "grade": 9.2
+            "grade": 9.2,
+            "status": "approved",
+            "enrollmentDate": "2023-08-30"
         },
         {
             "studentDNI": 31415926,
             "courseCode": "PRO104",
-            "grade": 8.8
+            "grade": 8.8,
+            "status": "approved",
+            "enrollmentDate": "2023-09-15"
         },
         {
             "studentDNI": 27182818,
             "courseCode": "HIS105",
-            "grade": 9.1
+            "grade": 9.1,
+            "status": "approved",
+            "enrollmentDate": "2023-10-01"
         },
         {
             "studentDNI": 21354870,
             "courseCode": "FIS102",
-            "grade": 8.7
+            "grade": 8.7,
+            "status": "approved",
+            "enrollmentDate": "2023-11-05"
         },
         {
             "studentDNI": 12345678,
             "courseCode": "QUI103",
-            "grade": 9.0
+            "grade": 9.0,
+            "status": "approved",
+            "enrollmentDate": "2023-12-10"
         },
         {
             "studentDNI": 87654321,
             "courseCode": "PRO104",
-            "grade": 7.5
+            "grade": 7.5,
+            "status": "approved",
+            "enrollmentDate": "2024-01-20"
         },
         {
             "studentDNI": 11223344,
             "courseCode": "HIS105",
-            "grade": 8.0
+            "grade": 8.0,
+            "status": "approved",
+            "enrollmentDate": "2024-02-25"
         }
     ]
 }

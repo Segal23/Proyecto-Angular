@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable } from 'rxjs';
-import { Student } from '../../shared/entities';
+import { Inscription } from '../../shared/entities';
 import { HttpClient } from '@angular/common/http';
 import { ApiPaths } from '../../shared/routes';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlumnosAPI {
+export class InscripcionesAPI {
+  
   baseurl = 'http://localhost:3000';
   constructor(private http :HttpClient) {
 
   }
 
-  getAlumnos(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this.baseurl}/${ApiPaths.STUDENTS}`).pipe(delay(1000));
+  getInscripciones(): Observable<Inscription[]> {
+    return this.http.get<Inscription[]>(`${this.baseurl}/${ApiPaths.INSCRIPTIONS}`).pipe(delay(1000));
   }
 }

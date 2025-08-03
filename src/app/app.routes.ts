@@ -18,7 +18,7 @@ export const routes: Routes = [
         loadComponent: () => import('../features/cursos/cursos').then(m => m.Cursos)
     },
     {
-        path: RoutePaths.INCRIPCIONES,
+        path: RoutePaths.INSCRIPCIONES,
         loadComponent: () => import('../features/inscripciones/inscripciones').then(m => m.Inscripciones)
     },
     {
