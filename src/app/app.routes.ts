@@ -22,6 +22,18 @@ export const routes: Routes = [
         loadComponent: () => import('../features/inscripciones/inscripciones').then(m => m.Inscripciones)
     },
     {
+        path: RoutePaths.VIEW_STUDENT,
+        loadComponent: () => import('../features/alumnos/view-student/view-student').then(m => m.ViewStudent)
+    },
+    {
+        path: RoutePaths.VIEW_COURSE,
+        loadComponent: () => import('../features/cursos/view-course/view-course').then(m => m.ViewCourse)
+    },
+    {
+        path: RoutePaths.VIEW_INSCRIPTION,
+        loadComponent: () => import('../features/inscripciones/view-inscription/view-inscription').then(m => m.ViewInscription)
+    },
+    {
         path: '**',
         component: NotFound
     }
