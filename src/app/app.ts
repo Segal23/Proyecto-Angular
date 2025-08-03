@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './navbar/navbar';
-import { Toolbar } from './toolbar/toolbar';
+import { Navbar } from '../features/navbar/navbar';
+import { Toolbar } from '../features/toolbar/toolbar';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { CommonModule } from '@angular/common';
-import { StudentsTable } from './students-table/students-table';
-import { AddForm } from "./add-form/add-form";
-import { DeleteForm } from './delete-form/delete-form';
+import { StudentsTable } from '../features/students-table/students-table';
+import { AddForm } from "../features/add-form/add-form";
+import { DeleteForm } from '../features/delete-form/delete-form';
 import { MatInputModule } from "@angular/material/input";
-import { EditForm } from './edit-form/edit-form';
+import { EditForm } from '../features/edit-form/edit-form';
 
 @Component({
   selector: 'app-root',

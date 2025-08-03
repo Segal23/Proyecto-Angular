@@ -1,0 +1,176 @@
+{
+    "students":
+    [
+        {
+            "name": "Juan",
+            "surname": "Pérez",
+            "age": 20,
+            "dni": 21354870,
+            "average": 8.5
+        },
+        {
+            "name": "Ana",
+            "surname": "Gómez",
+            "age": 22,
+            "dni": 12345678,
+            "average": 9.0
+        },
+        {
+            "name": "Luis",
+            "surname": "Martínez",
+            "age": 21,
+            "dni": 87654321,
+            "average": 7.5
+        },
+        {
+            "name": "María",
+            "surname": "López",
+            "age": 19,
+            "dni": 11223344,
+            "average": 8.0
+        },
+        {
+            "name": "Carlos",
+            "surname": "Hernández",
+            "age": 23,
+            "dni": 44332211,
+            "average": 9.5
+        },
+        {
+            "name": "Laura",
+            "surname": "Torres",
+            "age": 20,
+            "dni": 98765432,
+            "average": 8.2
+        },
+        {
+            "name": "Pedro",
+            "surname": "Ramírez",
+            "age": 24,
+            "dni": 13579246,
+            "average": 7.8
+        },
+        {
+            "name": "Sofía",
+            "surname": "García",
+            "age": 21,
+            "dni": 24681357,
+            "average": 9.1
+        },
+        {
+            "name": "Diego",
+            "surname": "Fernández",
+            "age": 22,
+            "dni": 31415926,
+            "average": 8.7
+        },
+        {
+            "name": "Isabel",
+            "surname": "Sánchez",
+            "age": 19,
+            "dni": 27182818,
+            "average": 9.3
+        }
+    ],
+    "cursos":
+    [
+        {
+            "name": "Matemáticas",
+            "code": "MAT101",
+            "credits": 5
+        },
+        {
+            "name": "Física",
+            "code": "FIS102",
+            "credits": 4
+        },
+        {
+            "name": "Química",
+            "code": "QUI103",
+            "credits": 3
+        },
+        {
+            "name": "Programación",
+            "code": "PRO104",
+            "credits": 6
+        },
+        {
+            "name": "Historia",
+            "code": "HIS105",
+            "credits": 2
+        }
+    ],
+    "inscripciones":
+    [
+        {
+            "studentDNI": 21354870,
+            "courseCode": "MAT101",
+            "grade": 8.0
+        },
+        {
+            "studentDNI": 12345678,
+            "courseCode": "FIS102",
+            "grade": 9.5
+        },
+        {
+            "studentDNI": 87654321,
+            "courseCode": "QUI103",
+            "grade": 7.0
+        },
+        {
+            "studentDNI": 11223344,
+            "courseCode": "PRO104",
+            "grade": 8.5
+        },
+        {
+            "studentDNI": 44332211,
+            "courseCode": "HIS105",
+            "grade": 9.0
+        },
+        {
+            "studentDNI": 98765432,
+            "courseCode": "MAT101",
+            "grade": 8.3
+        },
+        {
+            "studentDNI": 13579246,
+            "courseCode": "FIS102",
+            "grade": 7.5
+        },
+        {
+            "studentDNI": 24681357,
+            "courseCode": "QUI103",
+            "grade": 9.2
+        },
+        {
+            "studentDNI": 31415926,
+            "courseCode": "PRO104",
+            "grade": 8.8
+        },
+        {
+            "studentDNI": 27182818,
+            "courseCode": "HIS105",
+            "grade": 9.1
+        },
+        {
+            "studentDNI": 21354870,
+            "courseCode": "FIS102",
+            "grade": 8.7
+        },
+        {
+            "studentDNI": 12345678,
+            "courseCode": "QUI103",
+            "grade": 9.0
+        },
+        {
+            "studentDNI": 87654321,
+            "courseCode": "PRO104",
+            "grade": 7.5
+        },
+        {
+            "studentDNI": 11223344,
+            "courseCode": "HIS105",
+            "grade": 8.0
+        }
+    ]
+}
