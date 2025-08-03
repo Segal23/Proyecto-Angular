@@ -1,0 +1,15 @@
+.mat-elevation-z8{
+    background-color: #b854d611;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mat-mdc-header-cell {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.mat-mdc-cell{
+    font-size: 14px;
+}
