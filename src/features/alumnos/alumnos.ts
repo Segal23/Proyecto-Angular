@@ -1,12 +1,13 @@
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../shared/entities';
 import { Observable } from 'rxjs';
+import { StudentsTable } from './students-table/students-table';
 
 @Component({
   selector: 'app-alumnos',
-  imports: [JsonPipe, CommonModule],
+  imports: [CommonModule, StudentsTable],
   templateUrl: './alumnos.html',
   styleUrl: './alumnos.css'
 })

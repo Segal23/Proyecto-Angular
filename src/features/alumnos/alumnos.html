@@ -1,8 +1,5 @@
-
-<p>alumnos works!</p>
-
 <div *ngIf="alumnos$ | async as alumnos; else loading">
-    {{ alumnos | json }}
+    <app-students-table [students]="alumnos"></app-students-table>
 </div>
 
 <ng-template #loading>

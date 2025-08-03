@@ -1,12 +1,13 @@
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { InscripcionesAPI } from './inscripciones-api';
 import { Inscription } from '../../shared/entities';
 import { Observable } from 'rxjs';
+import { InscriptionsTable } from "./inscriptions-table/inscriptions-table";
 
 @Component({
   selector: 'app-inscripciones',
-  imports: [JsonPipe, CommonModule],
+  imports: [CommonModule, InscriptionsTable],
   templateUrl: './inscripciones.html',
   styleUrl: './inscripciones.css'
 })

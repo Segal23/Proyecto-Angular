@@ -1,7 +1,5 @@
-<p>inscripciones works!</p>
-
 <div *ngIf="inscripciones$ | async as inscripciones; else loading">
-    {{ inscripciones | json }}
+    <app-inscriptions-table [inscriptions]="inscripciones"></app-inscriptions-table>
 </div>
 
 <ng-template #loading>

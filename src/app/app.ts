@@ -5,7 +5,7 @@ import { Toolbar } from '../features/toolbar/toolbar';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { CommonModule } from '@angular/common';
-import { StudentsTable } from '../features/students-table/students-table';
+import { StudentsTable } from '../features/alumnos/students-table/students-table';
 import { AddForm } from "../features/add-form/add-form";
 import { DeleteForm } from '../features/delete-form/delete-form';
 import { MatInputModule } from "@angular/material/input";
