@@ -17,4 +17,9 @@ export class InscripcionesAPI {
   getInscripciones(): Observable<Inscription[]> {
     return this.http.get<Inscription[]>(`${this.baseurl}/${ApiPaths.INSCRIPTIONS}`).pipe(delay(1000));
   }
+
+  deleteInscripcion(inscription: Inscription): Observable<void> {
+    
+    return this.http.delete<void>(`${this.baseurl}/${ApiPaths.INSCRIPTIONS}/${inscription.id}`).pipe(delay(1000));
+  }
 }

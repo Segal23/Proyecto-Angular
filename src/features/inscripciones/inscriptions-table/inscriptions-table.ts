@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { Inscription } from '../../../shared/entities';
 import { Router } from '@angular/router';
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class InscriptionsTable {
 
-  @Input() inscriptions: Inscription[] = []; 
+  @Input() inscriptions: Inscription[] = [];
+  @Output() deleteEvent = new EventEmitter<Inscription>();
 
   displayedColumns: string[] = ['studentDNI', 'courseCode', 'grade', 'status', 'actions'];
 
@@ -19,5 +20,9 @@ export class InscriptionsTable {
 
   viewDetails(inscription: Inscription) {
     this.router.navigate(['/view-inscription', ], { state: { inscription : inscription } });
+  }
+
+  deleteInscription(inscription: Inscription) {
+    this.deleteEvent.emit(inscription);
   }
 }

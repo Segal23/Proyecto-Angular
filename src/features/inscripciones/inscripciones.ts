@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { InscripcionesAPI } from './inscripciones-api';
 import { Inscription } from '../../shared/entities';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { InscriptionsTable } from "./inscriptions-table/inscriptions-table";
 
 @Component({
@@ -19,5 +19,12 @@ export class Inscripciones {
 
   ngOnInit() {
     this.inscripciones$ = this.InscripcionesAPI.getInscripciones();
+  }
+
+  deleteInscription(inscription : Inscription) {
+    this.inscripciones$ = this.InscripcionesAPI.deleteInscripcion(inscription).pipe(
+      // Actualizar la lista de alumnos después de eliminar uno
+      switchMap(() => this.InscripcionesAPI.getInscripciones())
+    );
   }
 }

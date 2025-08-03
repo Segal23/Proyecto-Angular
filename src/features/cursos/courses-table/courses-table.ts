@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../../../shared/entities';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class CoursesTable {
 
   @Input() courses: Course[] = []; 
+  @Output() deleteEvent = new EventEmitter<Course>();
 
   displayedColumns: string[] = ['name', 'code', 'credits', 'description', 'actions'];
 
@@ -19,6 +20,11 @@ export class CoursesTable {
 
   viewDetails(course: Course) {
     this.router.navigate(['/view-course', ], { state: { course : course } });
+  }
+
+  deleteCourse(course: Course) {
+    console.log('Eliminando curso:', course);
+    this.deleteEvent.emit(course);
   }
 }
 

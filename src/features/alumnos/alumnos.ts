@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../shared/entities';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { StudentsTable } from './students-table/students-table';
 
 @Component({
@@ -18,5 +18,12 @@ export class Alumnos {
 
   ngOnInit() {
     this.alumnos$ = this.AlumnosAPI.getAlumnos();
+  }
+
+  deleteStudent(student : Student) {
+    this.alumnos$ = this.AlumnosAPI.deleteAlumno(student).pipe(
+      // Actualizar la lista de alumnos después de eliminar uno
+      switchMap(() => this.AlumnosAPI.getAlumnos())
+    );
   }
 }

@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CursosAPI } from './cursos-api';
 import { Course } from '../../shared/entities';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { CoursesTable } from "./courses-table/courses-table";
-
 
 @Component({
   selector: 'app-cursos',
@@ -19,5 +18,13 @@ export class Cursos {
 
   ngOnInit() {
     this.cursos$ = this.CursosAPI.getCursos();
+  }
+
+  deleteCourse(course : Course) {
+    console.log('Eliminando curso:', course);
+    this.cursos$ = this.CursosAPI.deleteCurso(course).pipe(
+      // Actualizar la lista de alumnos después de eliminar uno
+      switchMap(() => this.CursosAPI.getCursos())
+    );
   }
 }

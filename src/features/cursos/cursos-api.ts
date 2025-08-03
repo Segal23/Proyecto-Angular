@@ -16,4 +16,9 @@ export class CursosAPI {
   getCursos(): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.baseurl}/${ApiPaths.COURSES}`).pipe(delay(1000));
   }
+
+  deleteCurso(course: Course): Observable<void> {
+    console.log('Eliminando curso:', course);
+    return this.http.delete<void>(`${this.baseurl}/${ApiPaths.COURSES}/${course.id}`).pipe(delay(1000));
+  }
 }

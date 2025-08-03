@@ -4,6 +4,7 @@ export interface Student{
     age: number;
     dni: number;
     average: number;
+    id: number
 }
 
 export interface Course{
@@ -11,6 +12,7 @@ export interface Course{
     code: string;
     credits: number;
     description: string;
+    id: number;
 }
 
 export interface Inscription{
@@ -19,4 +21,5 @@ export interface Inscription{
     grade: number;
     status: string;
     enrollmentDate: string;
+    id: number;
 }

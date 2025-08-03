@@ -43,7 +43,8 @@ export class EditForm implements OnInit, OnChanges {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(0)]],
-      average: ['', [Validators.required, Validators.min(0), Validators.max(10)]]
+      average: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
+      id: ['', Validators.required]
     });
 
     this.studentFound = false;
@@ -65,6 +66,7 @@ export class EditForm implements OnInit, OnChanges {
           surname: student.surname,
           age: student.age,
           average: student.average,
+          id: student.id
         });
         this.studentFound = true;
       } else {
@@ -87,6 +89,7 @@ export class EditForm implements OnInit, OnChanges {
         surname: this.editForm.value.surname,
         age: Number(this.editForm.value.age),
         average: Number(this.editForm.value.average),
+        id: Number(this.editForm.value.id)
       };
   
       this.studentUpdated.emit(updated);
