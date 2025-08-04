@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AlumnosAPI } from '../alumnos-api';
 import { RoutePaths } from '../../../shared/routes';
 import { firstValueFrom } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-student',
@@ -20,7 +21,7 @@ export class EditStudent {
   student: Student | undefined;
   editStudent!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private alumnosApi: AlumnosAPI) {
+  constructor(private router: Router, private fb: FormBuilder, private alumnosApi: AlumnosAPI, private snackBar: MatSnackBar) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.student = navigation.extras.state['student'];
@@ -39,7 +40,6 @@ export class EditStudent {
 
   async onSubmit() {
       if (this.editStudent.invalid || !this.student?.id) return;
-    
       const updatedStudent: Student = {
         id: this.student.id,
         dni: this.student.dni,
@@ -48,9 +48,24 @@ export class EditStudent {
     
       try {
         await firstValueFrom(this.alumnosApi.editAlumno(updatedStudent));
+        const snackBarRef = this.snackBar.open(
+          'Estudiante actualizado con éxito ✅',
+          'Cerrar', {
+            duration: 2000,
+            horizontalPosition: 'left',
+            verticalPosition: 'bottom',
+            panelClass: ['success-snackbar']
+          }
+        );
+        await firstValueFrom(snackBarRef.afterDismissed());
         this.router.navigate([`/${RoutePaths.ALUMNOS}`]);
       } catch (error) {
-        console.error('Error al actualizar el alumno', error);
+        this.snackBar.open('Error al actualizar el estudiante ❌', 'Cerrar', {
+          duration: 2000,
+          horizontalPosition: 'left',
+          verticalPosition: 'bottom',
+          panelClass: ['success-snackbar']
+        });
       }
-    }
+  }
 }

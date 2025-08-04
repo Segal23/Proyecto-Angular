@@ -13,32 +13,32 @@
       "dni": 87654321,
       "name": "Luis",
       "surname": "Martínez",
-      "age": 21,
+      "age": 23,
       "average": 7.5
     },
     {
+      "id": "4",
+      "dni": 11223344,
       "name": "María",
       "surname": "López",
       "age": 19,
-      "dni": 11223344,
-      "average": 8,
-      "id": "4"
+      "average": 8
     },
     {
+      "id": "5",
+      "dni": 44332211,
       "name": "Carlos",
       "surname": "Hernández",
       "age": 23,
-      "dni": 44332211,
-      "average": 9.5,
-      "id": "5"
+      "average": 9.5
     },
     {
+      "id": "6",
+      "dni": 98765432,
       "name": "Laura",
       "surname": "Torres",
       "age": 20,
-      "dni": 98765432,
-      "average": 8.2,
-      "id": "6"
+      "average": 8.2
     },
     {
       "name": "Pedro",
@@ -115,7 +115,7 @@
       "id": "1",
       "studentDNI": 21354870,
       "courseCode": "MAT101",
-      "grade": 8,
+      "grade": 9,
       "status": "approved"
     },
     {
@@ -127,12 +127,11 @@
       "id": "2"
     },
     {
+      "id": "3",
       "studentDNI": 87654321,
       "courseCode": "QUI103",
-      "grade": 7,
-      "status": "approved",
-      "enrollmentDate": "2023-03-10",
-      "id": "3"
+      "grade": 8,
+      "status": "approved"
     },
     {
       "studentDNI": 11223344,

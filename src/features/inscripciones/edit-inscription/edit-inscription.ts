@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { InscripcionesAPI } from '../inscripciones-api';
 import { RoutePaths } from '../../../shared/routes';
 import { firstValueFrom } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-inscription',
@@ -20,7 +21,7 @@ export class EditInscription {
   inscription: Inscription | undefined;
   editInscription!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private inscripcionesApi: InscripcionesAPI) {
+  constructor(private router: Router, private fb: FormBuilder, private inscripcionesApi: InscripcionesAPI, private snackBar: MatSnackBar) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.inscription = navigation.extras.state['inscription'];
@@ -46,9 +47,24 @@ export class EditInscription {
   
     try {
       await firstValueFrom(this.inscripcionesApi.editInscripcion(updatedInscription));
+      const snackBarRef = this.snackBar.open(
+        'Inscripción actualizada con éxito ✅',
+        'Cerrar', {
+          duration: 2000,
+          horizontalPosition: 'left',
+          verticalPosition: 'bottom',
+          panelClass: ['success-snackbar']
+        }
+      );
+      await firstValueFrom(snackBarRef.afterDismissed());
       this.router.navigate([`/${RoutePaths.INSCRIPCIONES}`]);
     } catch (error) {
-      console.error('Error al actualizar la inscripción', error);
+      this.snackBar.open('Error al actualizar la inscripción ❌', 'Cerrar', {
+        duration: 2000,
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom',
+        panelClass: ['success-snackbar']
+      });
     }
   }
 }

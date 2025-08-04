@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CursosAPI } from '../cursos-api';
 import { RoutePaths } from '../../../shared/routes';
 import { firstValueFrom } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-course',
@@ -19,7 +20,7 @@ export class EditCourse {
   course: Course | undefined;
   editCourse!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private cursosApi: CursosAPI) {
+  constructor(private router: Router, private fb: FormBuilder, private cursosApi: CursosAPI, private snackBar: MatSnackBar) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras.state) {
       this.course = navigation.extras.state['course'];
@@ -45,9 +46,24 @@ export class EditCourse {
     
       try {
         await firstValueFrom(this.cursosApi.editCurso(updatedCourse));
+        const snackBarRef = this.snackBar.open(
+          'Curso actualizado con éxito ✅',
+          'Cerrar', {
+            duration: 2000,
+            horizontalPosition: 'left',
+            verticalPosition: 'bottom',
+            panelClass: ['success-snackbar']
+          }
+        );
+        await firstValueFrom(snackBarRef.afterDismissed());
         this.router.navigate([`/${RoutePaths.CURSOS}`]);
       } catch (error) {
-        console.error('Error al actualizar el curso', error);
+        this.snackBar.open('Error al actualizar el curso ❌', 'Cerrar', {
+          duration: 2000,
+          horizontalPosition: 'left',
+          verticalPosition: 'bottom',
+          panelClass: ['success-snackbar']
+        });
       }
     }
 }
