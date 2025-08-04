@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from '../features/navbar/navbar';
 import { Toolbar } from '../features/toolbar/toolbar';
@@ -10,6 +10,16 @@ import { AddForm } from "../features/add-form/add-form";
 import { DeleteForm } from '../features/delete-form/delete-form';
 import { MatInputModule } from "@angular/material/input";
 import { EditForm } from '../features/edit-form/edit-form';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+@NgModule({
+  imports: [
+    MatDialogModule,
+    MatSnackBarModule,
+  ]
+})
+export class AppModule {}
 
 @Component({
   selector: 'app-root',
@@ -25,38 +35,5 @@ export class App implements OnInit {
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {}
-  // ngOnInit(): void {
-  //   this.http.get<Student[]>('mocks/students.json').subscribe(data => {
-  //     this.students = data;
-  //   }, error => {
-  //     console.error('Error fetching data:', error);
-  //   });
-  // }
 
-  // addStudent(student: Student) {
-  //   this.students = [...this.students, student];
-  // }
-
-  // deleteStudent(dni: string): boolean {
-  //   const index = this.students.findIndex(student => student.dni.toString() === dni);
-  //   if (index !== -1) {
-  //     this.students.splice(index, 1);
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
-  // updateStudent(updated: Student) {
-  //   const updatedDni = typeof updated.dni === 'string' ? Number(updated.dni) : updated.dni;
-  //   const index = this.students.findIndex(s => s.dni === updatedDni);
-  //   if (index !== -1) {
-  //     updated.dni = updatedDni;
-  //     this.students[index] = updated;
-  //     this.students = [...this.students]; 
-  //     console.log('Estudiante actualizado:', updated);
-  //   } else {
-  //     console.warn('No se encontró estudiante para actualizar con DNI:', updatedDni);
-  //   }
-  // }
-  
 }

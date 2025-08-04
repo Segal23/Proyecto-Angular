@@ -23,3 +23,30 @@ body {
     font-size: 16px !important;
     font-weight: 400 !important;
 }
+
+.custom-dialog-container {
+    border-radius: 12px;
+    padding: 24px;
+    background: linear-gradient(50deg, #7cdada, #74406788);
+    color: #000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+
+    .mat-mdc-dialog-surface{
+        background: linear-gradient(50deg, #7cdada11, #74406711);
+        color: #000;
+    }
+
+    .mat-mdc-dialog-content{
+        color: #000D !important;
+        font-size: 14px !important;
+    }
+
+    button{
+        background-color: #f09add99;
+        border: 1px solid #99568d;
+        border-radius: 5px;
+        margin: 0 5px;
+        width: 80px;;
+    }
+    /* .mat-mdc-dialog-title, .mat-mdc-dialog-content, .mat-mdc-dialog-actions, */
+}

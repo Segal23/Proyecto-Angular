@@ -1,14 +1,6 @@
 {
   "students": [
     {
-      "id": "2",
-      "dni": 12345678,
-      "name": "Javier",
-      "surname": "Pérez",
-      "age": 20,
-      "average": 9
-    },
-    {
       "id": "3",
       "dni": 87654321,
       "name": "Luis",
@@ -57,20 +49,92 @@
       "id": "8"
     },
     {
-      "name": "Diego",
+      "name": "Andrés",
       "surname": "Fernández",
       "age": 22,
       "dni": 31415926,
-      "average": 8.7,
+      "average": 8.5,
       "id": "9"
     },
     {
-      "name": "Isabel",
-      "surname": "Sánchez",
-      "age": 19,
+      "name": "Ana",
+      "surname": "Gómez",
+      "age": 20,
       "dni": 27182818,
       "average": 9.3,
       "id": "10"
+    },
+    {
+      "name": "Diego",
+      "surname": "Sánchez",
+      "age": 23,
+      "dni": 21354870,
+      "average": 8.7,
+      "id": "11"
+    },
+    {
+      "name": "Clara",
+      "surname": "Vázquez",
+      "age": 19,
+      "dni": 12345678,
+      "average": 9.4,
+      "id": "12"
+    },
+    {
+      "name": "Raúl",
+      "surname": "Morales",
+      "age": 22,
+      "dni": 87654321,
+      "average": 8.1,
+      "id": "13"
+    },
+    {
+      "name": "Lucía",
+      "surname": "Jiménez",
+      "age": 21,
+      "dni": 11223344,
+      "average": 9.2,
+      "id": "14"
+    },
+    {
+      "name": "Jorge",
+      "surname": "Paredes",
+      "age": 24,
+      "dni": 44332211,
+      "average": 8.6,
+      "id": "15"
+    },
+    {
+      "name": "Elena",
+      "surname": "Cruz",
+      "age": 20,
+      "dni": 98765432,
+      "average": 9.3,
+      "id": "16"
+    },
+    {
+      "name": "Miguel",
+      "surname": "Ríos",
+      "age": 23,
+      "dni": 13579246,
+      "average": 8.4,
+      "id": "17"
+    },
+    {
+      "name": "Valeria",
+      "surname": "Moreno",
+      "age": 21,
+      "dni": 24681357,
+      "average": 9.5,
+      "id": "18"
+    },
+    {
+      "name": "Samuel",
+      "surname": "Castillo",
+      "age": 22,
+      "dni": 31415926,
+      "average": 8.9,
+      "id": "19"
     }
   ],
   "courses": [
@@ -98,16 +162,51 @@
     {
       "name": "Programación",
       "code": "PRO104",
-      "credits": 6,
-      "description": "Curso de programación básica en Python.",
+      "credits": 4,
+      "description": "Curso de introducción a la programación en Python.",
       "id": "4"
     },
     {
       "name": "Historia",
       "code": "HIS105",
-      "credits": 2,
+      "credits": 3,
       "description": "Historia universal desde la antigüedad hasta la modernidad.",
       "id": "5"
+    },
+    {
+      "name": "Literatura",
+      "code": "LIT106",
+      "credits": 3,
+      "description": "Análisis de obras literarias clásicas y contemporáneas.",
+      "id": "6"
+    },
+    {
+      "name": "Biología",
+      "code": "BIO107",
+      "credits": 4,
+      "description": "Estudio de los principios básicos de la biología.",
+      "id": "7"
+    },
+    {
+      "name": "Economía",
+      "code": "ECO108",
+      "credits": 3,
+      "description": "Introducción a los conceptos económicos fundamentales.",
+      "id": "8"
+    },
+    {
+      "name": "Psicología",
+      "code": "PSI109",
+      "credits": 3,
+      "description": "Fundamentos de la psicología y sus aplicaciones.",
+      "id": "9"
+    },
+    {
+      "name": "Sociología",
+      "code": "SOC110",
+      "credits": 3,
+      "description": "Estudio de las sociedades y sus estructuras.",
+      "id": "10"
     }
   ],
   "inscriptions": [
@@ -252,13 +351,6 @@
       "status": "approved",
       "enrollmentDate": "2024-06-20",
       "id": "18"
-    },
-    {
-      "id": "19",
-      "studentDNI": 31415926,
-      "courseCode": "HIS105",
-      "grade": 9.2,
-      "status": "approved"
     }
   ]
 }
