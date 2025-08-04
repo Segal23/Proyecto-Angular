@@ -13,3 +13,38 @@
 .mat-mdc-cell{
     font-size: 14px;
 }
+
+.mat-column-actions {
+    width: 20%;
+    text-align: center;
+}
+
+button{
+    background-color: #f09add99;
+    border: 1px solid #99568d;
+    border-radius: 5px;
+    margin: 0 2px;
+    color:#440a39;
+    &:hover {
+        background-color: #dd74c6;
+        border-color: #99568d;
+    }
+}
+
+.view-icon {
+    color: #305885;
+    font-size: 20px;
+    padding-top: 3px;
+}
+
+.edit-icon {
+    color: #cfa940;
+    font-size: 20px;
+    padding-top: 3px;
+}
+
+.delete-icon {
+    color: #ce4238;
+    font-size: 20px;
+    padding-top: 3px;
+}

@@ -23,9 +23,15 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element"> {{element.actions}} 
-        <button mat-button (click)="viewDetails(element)">Ver</button>
-        <button mat-button (click)="editInscription(element)">Editar</button>
-        <button mat-button (click)="deleteInscription(element)">Eliminar</button>
+        <button (click)="viewDetails(element)" matTooltip="Ver">
+            <mat-icon class="view-icon">visibility</mat-icon>
+        </button>
+        <button (click)="editInscription(element)" matTooltip="Editar">
+            <mat-icon class="edit-icon">edit</mat-icon>
+        </button>  
+        <button (click)="deleteInscription(element)" matTooltip="Eliminar">
+          <mat-icon class="delete-icon">delete</mat-icon>
+        </button>
       </td>
     </ng-container>
 
