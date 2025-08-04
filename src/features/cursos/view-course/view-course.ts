@@ -25,10 +25,10 @@ export class ViewCourse {
 
   ngOnInit() {
     this.viewCourse = this.fb.group({
-      name: [this.course?.name || '', Validators.required],
-      code: [this.course?.code || '', Validators.required],
-      credits: [this.course?.credits || '', Validators.required],
-      description: [this.course?.description || 0, Validators.required],
+      name: [this.course?.name],
+      code: [this.course?.code],
+      credits: [this.course?.credits],
+      description: [this.course?.description],
     });
   }
 }

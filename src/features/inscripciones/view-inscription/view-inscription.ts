@@ -25,10 +25,10 @@ export class ViewInscription {
 
   ngOnInit() {
     this.viewInscription = this.fb.group({
-      studentDNI: [this.inscription?.studentDNI || '', Validators.required],
-      courseCode: [this.inscription?.courseCode || '', Validators.required],
-      grade: [this.inscription?.grade || '', Validators.required],
-      status: [this.inscription?.status || 0, Validators.required]
+      studentDNI: [this.inscription?.studentDNI],
+      courseCode: [this.inscription?.courseCode],
+      grade: [this.inscription?.grade],
+      status: [this.inscription?.status]
     });
   }
 }

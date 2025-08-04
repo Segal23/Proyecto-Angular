@@ -1,22 +1,31 @@
 <h2>Detalle del curso</h2>
 <form [formGroup]="viewCourse" class="view-form">
-    <mat-form-field appearance="outline" >
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" readonly />
-    </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Code</mat-label>
-        <input matInput formControlName="code" readonly />
-    </mat-form-field>
+    <div class="form-row">
+        <mat-form-field appearance="outline" >
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" readonly />
+        </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Credits</mat-label>
-        <input type="number" matInput formControlName="credits" readonly/>
-    </mat-form-field>
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="code" readonly />
+        </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description" readonly />
-    </mat-form-field>
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Credits</mat-label>
+            <input type="number" matInput formControlName="credits" readonly/>
+        </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" readonly />
+        </mat-form-field>
+    </div>
 </form>

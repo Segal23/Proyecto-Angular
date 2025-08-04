@@ -25,11 +25,11 @@ export class ViewStudent {
 
   ngOnInit() {
     this.viewStudent = this.fb.group({
-      dni: [this.student?.dni || '', Validators.required],
-      name: [this.student?.name || '', Validators.required],
-      surname: [this.student?.surname || '', Validators.required],
-      age: [this.student?.age || 0, Validators.required],
-      average: [this.student?.average || 0, Validators.required],
+      dni: [this.student?.dni],
+      name: [this.student?.name],
+      surname: [this.student?.surname],
+      age: [this.student?.age],
+      average: [this.student?.average],
     });
   }
-}
+} 
