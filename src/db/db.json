@@ -119,14 +119,6 @@
       "dni": 13579246,
       "average": 8.4,
       "id": "17"
-    },
-    {
-      "name": "Valeria",
-      "surname": "Moreno",
-      "age": 21,
-      "dni": 24681357,
-      "average": 9.5,
-      "id": "18"
     }
   ],
   "courses": [
@@ -185,13 +177,6 @@
       "credits": 3,
       "description": "Introducción a los conceptos económicos fundamentales.",
       "id": "8"
-    },
-    {
-      "name": "Psicología",
-      "code": "PSI109",
-      "credits": 3,
-      "description": "Fundamentos de la psicología y sus aplicaciones.",
-      "id": "9"
     }
   ],
   "inscriptions": [
@@ -320,14 +305,6 @@
       "status": "approved",
       "enrollmentDate": "2024-04-30",
       "id": "16"
-    },
-    {
-      "studentDNI": 13579246,
-      "courseCode": "QUI103",
-      "grade": 9.3,
-      "status": "approved",
-      "enrollmentDate": "2024-05-15",
-      "id": "17"
     }
   ]
 }

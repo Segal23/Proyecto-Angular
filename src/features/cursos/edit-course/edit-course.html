@@ -1,24 +1,33 @@
 <h2>Detalle del estudiante</h2>
 <form [formGroup]="editCourse" class="edit-form">
-    <mat-form-field appearance="outline" >
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
-    </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Code</mat-label>
-        <input matInput formControlName="code" />
-    </mat-form-field>
+    <div class="form-row">
+        <mat-form-field appearance="outline" >
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Credits</mat-label>
-        <input type="number" matInput formControlName="credits"/>
-    </mat-form-field>
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="code" />
+        </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description" />
-    </mat-form-field>
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Credits</mat-label>
+            <input type="number" matInput formControlName="credits"/>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" />
+        </mat-form-field>
+    </div>
 
     <button type="submit" (click)="onSubmit()" [disabled]="editCourse.invalid">Actualizar</button>
 </form>

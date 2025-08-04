@@ -1,6 +1,6 @@
 h2{
     margin: 0 auto; 
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     max-width: 400px; 
     text-decoration: underline;
 }
@@ -8,7 +8,53 @@ h2{
 .edit-form {
     display: flex;
     flex-direction: column;
-    gap: 16px; 
+    gap: 14px; 
     max-width: 400px; 
     margin: 0 auto; 
+}
+
+mat-form-field {
+    font-size: 16px;
+    height: 40px;
+}
+
+mat-form-field .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+mat-form-field .mat-form-field-flex {
+    height: 40px;
+    align-items: center;
+}
+
+input[matInput] {
+    background-color: #e7e3eb55; 
+    border: 1px solid #69378d55 !important;
+    border-radius: 2px;
+    padding: 3px 12px;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.form-row mat-form-field {
+    flex: 1;
+}
+
+button{
+    background-color: #f09add99;
+    border: 1px solid #99568d;
+    border-radius: 5px;
+    margin: 0 2px;
+    color:#440a39;
+    &:hover {
+        background-color: #dd74c6;
+        border-color: #99568d;
+    }
 }
