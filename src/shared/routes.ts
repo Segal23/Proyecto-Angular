@@ -4,7 +4,10 @@ export enum RoutePaths {
     INSCRIPCIONES = 'inscripciones',
     VIEW_STUDENT = 'view-student',
     VIEW_COURSE = 'view-course',
-    VIEW_INSCRIPTION = 'view-inscription'
+    VIEW_INSCRIPTION = 'view-inscription',
+    EDIT_STUDENT = 'edit-student',
+    EDIT_COURSE = 'edit-course',
+    EDIT_INSCRIPTION = 'edit-inscription',
 }
 
 export enum ApiPaths{

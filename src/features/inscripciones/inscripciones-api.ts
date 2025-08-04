@@ -22,4 +22,8 @@ export class InscripcionesAPI {
     
     return this.http.delete<void>(`${this.baseurl}/${ApiPaths.INSCRIPTIONS}/${inscription.id}`).pipe(delay(1000));
   }
+    
+  editInscripcion(inscription : Inscription ): Observable<Inscription> {
+    return this.http.put<Inscription>(`${this.baseurl}/${ApiPaths.INSCRIPTIONS}/${inscription.id}`, inscription);
+  }
 }

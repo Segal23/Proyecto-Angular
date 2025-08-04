@@ -24,7 +24,7 @@
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element"> {{element.actions}} 
         <button mat-button (click)="viewDetails(element)">Ver</button>
-        <!-- <button mat-button (click)="editStudent(element)">Editar</button>   -->
+        <button mat-button (click)="editStudent(element)">Editar</button>  
         <button mat-button (click)="deleteStudent(element)">Eliminar</button>
       </td>
     </ng-container>

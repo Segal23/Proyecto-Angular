@@ -23,7 +23,12 @@ export class Inscripciones {
 
   deleteInscription(inscription : Inscription) {
     this.inscripciones$ = this.InscripcionesAPI.deleteInscripcion(inscription).pipe(
-      // Actualizar la lista de alumnos después de eliminar uno
+      switchMap(() => this.InscripcionesAPI.getInscripciones())
+    );
+  }
+
+  editInscription(inscription : Inscription) {
+    this.inscripciones$ = this.InscripcionesAPI.editInscripcion(inscription).pipe(
       switchMap(() => this.InscripcionesAPI.getInscripciones())
     );
   }

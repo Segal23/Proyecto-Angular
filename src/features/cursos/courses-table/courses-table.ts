@@ -13,6 +13,7 @@ export class CoursesTable {
 
   @Input() courses: Course[] = []; 
   @Output() deleteEvent = new EventEmitter<Course>();
+  @Output() editEvent = new EventEmitter<Course>();
 
   displayedColumns: string[] = ['name', 'code', 'credits', 'description', 'actions'];
 
@@ -26,5 +27,10 @@ export class CoursesTable {
     console.log('Eliminando curso:', course);
     this.deleteEvent.emit(course);
   }
+
+  editCourse(course: Course) {
+    this.router.navigate(['/edit-course', ], { state: { course : course } });
+  }
+
 }
 

@@ -21,4 +21,8 @@ export class CursosAPI {
     console.log('Eliminando curso:', course);
     return this.http.delete<void>(`${this.baseurl}/${ApiPaths.COURSES}/${course.id}`).pipe(delay(1000));
   }
+
+  editCurso(course: Course): Observable<Course> {
+    return this.http.put<Course>(`${this.baseurl}/${ApiPaths.COURSES}/${course.id}`, course);
+  }
 }

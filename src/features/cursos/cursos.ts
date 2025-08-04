@@ -27,4 +27,11 @@ export class Cursos {
       switchMap(() => this.CursosAPI.getCursos())
     );
   }
+
+  editCourse(course: Course) {
+    this.cursos$ = this.CursosAPI.editCurso(course).pipe(
+      // Actualizar la lista de alumnos después de editar uno
+      switchMap(() => this.CursosAPI.getCursos())
+    );
+  }
 }

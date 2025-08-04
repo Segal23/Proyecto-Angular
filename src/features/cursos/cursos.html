@@ -1,5 +1,5 @@
 <div *ngIf="cursos$ | async as cursos; else loading">
-    <app-courses-table (deleteEvent)="deleteCourse($event)" [courses]="cursos"></app-courses-table>
+    <app-courses-table (editEvent)="editCourse($event)" (deleteEvent)="deleteCourse($event)" [courses]="cursos"></app-courses-table>
 </div>
 
 <ng-template #loading>

@@ -1,0 +1,14 @@
+h2{
+    margin: 0 auto; 
+    padding-bottom: 50px;
+    max-width: 400px; 
+    text-decoration: underline;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; 
+    max-width: 400px; 
+    margin: 0 auto; 
+}

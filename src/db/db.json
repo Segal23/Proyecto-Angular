@@ -1,20 +1,20 @@
 {
   "students": [
     {
+      "id": "2",
+      "dni": 12345678,
       "name": "Javier",
       "surname": "Pérez",
       "age": 20,
-      "dni": 12345678,
-      "average": 9,
-      "id": "2"
+      "average": 9
     },
     {
+      "id": "3",
+      "dni": 87654321,
       "name": "Luis",
       "surname": "Martínez",
       "age": 21,
-      "dni": 87654321,
-      "average": 7.5,
-      "id": "3"
+      "average": 7.5
     },
     {
       "name": "María",
@@ -75,18 +75,18 @@
   ],
   "courses": [
     {
+      "id": "1",
       "name": "Matemáticas",
       "code": "MAT101",
       "credits": 5,
-      "description": "Curso introductorio a las matemáticas básicas.",
-      "id": "1"
+      "description": "Curso introductorio a las matemáticas básicas."
     },
     {
+      "id": "2",
       "name": "Física",
       "code": "FIS102",
       "credits": 4,
-      "description": "Fundamentos de la física clásica y moderna.",
-      "id": "2"
+      "description": "Fundamentos de la física clásica y moderna."
     },
     {
       "name": "Química",
@@ -112,12 +112,11 @@
   ],
   "inscriptions": [
     {
+      "id": "1",
       "studentDNI": 21354870,
       "courseCode": "MAT101",
       "grade": 8,
-      "status": "approved",
-      "enrollmentDate": "2023-01-15",
-      "id": "1"
+      "status": "approved"
     },
     {
       "studentDNI": 12345678,
@@ -230,6 +229,37 @@
       "status": "approved",
       "enrollmentDate": "2024-03-25",
       "id": "15"
+    },
+    {
+      "studentDNI": 98765432,
+      "courseCode": "FIS102",
+      "grade": 8.1,
+      "status": "approved",
+      "enrollmentDate": "2024-04-30",
+      "id": "16"
+    },
+    {
+      "studentDNI": 13579246,
+      "courseCode": "QUI103",
+      "grade": 9.3,
+      "status": "approved",
+      "enrollmentDate": "2024-05-15",
+      "id": "17"
+    },
+    {
+      "studentDNI": 24681357,
+      "courseCode": "PRO104",
+      "grade": 8.6,
+      "status": "approved",
+      "enrollmentDate": "2024-06-20",
+      "id": "18"
+    },
+    {
+      "id": "19",
+      "studentDNI": 31415926,
+      "courseCode": "HIS105",
+      "grade": 9.2,
+      "status": "approved"
     }
   ]
 }
