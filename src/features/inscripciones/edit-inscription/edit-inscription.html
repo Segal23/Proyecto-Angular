@@ -3,31 +3,31 @@
 
     <div class="form-row">
         <mat-form-field appearance="outline" >
-            <mat-label>Student DNI</mat-label>
-            <input matInput formControlName="studentDNI" readonly class="input-dni"/>
+            <mat-label>DNI Alumno</mat-label>
+            <input matInput formControlName="studentDNI" readonly class="input-dni" (blur)="validarCampos()"/>
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Course Code</mat-label>
-            <input matInput formControlName="courseCode" />
+            <mat-label>Código Curso</mat-label>
+            <input matInput formControlName="courseCode" (blur)="validarCampos()"/>
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Grade</mat-label>
-            <input type="number" matInput formControlName="grade"/>
+            <mat-label>Grado</mat-label>
+            <input type="number" matInput formControlName="grade" (blur)="validarCampos()"/>
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Status</mat-label>
-            <input matInput formControlName="status" />
+            <mat-label>Estado</mat-label>
+            <input matInput formControlName="status" (blur)="validarCampos()" />
         </mat-form-field>
     </div>
 
-    <button type="submit" (click)="onSubmit()" [disabled]="editInscription.invalid">Actualizar</button>
+    <button type="submit" (click)="onSubmit()" >Actualizar</button>
 </form>

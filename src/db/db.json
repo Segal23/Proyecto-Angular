@@ -130,13 +130,6 @@
       "description": "Curso introductorio a las matemáticas básicas."
     },
     {
-      "id": "2",
-      "name": "Física",
-      "code": "FIS102",
-      "credits": 4,
-      "description": "Fundamentos de la física clásica y moderna."
-    },
-    {
       "name": "Química",
       "code": "QUI103",
       "credits": 3,

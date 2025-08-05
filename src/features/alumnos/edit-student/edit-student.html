@@ -4,33 +4,33 @@
     <div class="form-row">
         <mat-form-field appearance="outline" >
             <mat-label>DNI</mat-label>
-            <input matInput formControlName="dni" readonly class="input-dni" />
+            <input matInput formControlName="dni" (blur)="validarCampos()" readonly class="input-dni" />
         </mat-form-field>
     </div>
     
     <div class="form-row">
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="name" />
+            <input matInput formControlName="name" (blur)="validarCampos()" />
         </mat-form-field>
     
         <mat-form-field appearance="outline">
             <mat-label>Apellido</mat-label>
-            <input matInput formControlName="surname"/>
+            <input matInput formControlName="surname" (blur)="validarCampos()"/>
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
             <mat-label>Edad</mat-label>
-            <input type="number" matInput formControlName="age" />
+            <input type="number" matInput formControlName="age" (blur)="validarCampos()" />
         </mat-form-field>
     
         <mat-form-field appearance="outline">
             <mat-label>Promedio</mat-label>
-            <input type="number" matInput formControlName="average" />
+            <input type="number" matInput formControlName="average" (blur)="validarCampos()" />
         </mat-form-field>
     </div>
 
-    <button type="submit" (click)="onSubmit()" [disabled]="editStudent.invalid">Actualizar</button>
+    <button type="submit" (click)="onSubmit()">Actualizar</button>
 </form>
