@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { AlumnosAPI } from './alumnos-api';
 import { Student } from '../../shared/entities';
 import { Observable, switchMap } from 'rxjs';
@@ -7,10 +7,11 @@ import { StudentsTable } from './students-table/students-table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialog } from '../../shared/components/confirm-dialog/confirm-dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-alumnos',
-  imports: [CommonModule, StudentsTable],
+  imports: [CommonModule, StudentsTable, MatProgressSpinnerModule],
   templateUrl: './alumnos.html',
   styleUrl: './alumnos.css'
 })

@@ -1,5 +1,5 @@
 .mat-elevation-z8{
-    background-color: #b854d611;
+    background-color: #54b1d611;
     border: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -20,8 +20,8 @@
 }
 
 button{
-    background-color: #f09add99;
-    border: 1px solid #99568d;
+    background-color: #9af0e999;
+    border: 1px solid #569199;
     border-radius: 5px;
     margin: 0 2px;
     color:#440a39;

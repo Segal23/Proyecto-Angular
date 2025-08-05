@@ -7,10 +7,11 @@ import { CoursesTable } from "./courses-table/courses-table";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialog } from '../../shared/components/confirm-dialog/confirm-dialog';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-cursos',
-  imports: [CommonModule, CoursesTable],
+  imports: [CommonModule, CoursesTable, MatProgressSpinnerModule],
   templateUrl: './cursos.html',
   styleUrl: './cursos.css'
 })

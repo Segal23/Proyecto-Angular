@@ -7,10 +7,11 @@ import { InscriptionsTable } from "./inscriptions-table/inscriptions-table";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialog } from '../../shared/components/confirm-dialog/confirm-dialog';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-inscripciones',
-  imports: [CommonModule, InscriptionsTable],
+  imports: [CommonModule, InscriptionsTable, MatProgressSpinnerModule],
   templateUrl: './inscripciones.html',
   styleUrl: './inscripciones.css'
 })

@@ -20,13 +20,13 @@
 }
 
 button{
-    background-color: #f09add99;
+    background-color: #dc9af099;
     border: 1px solid #99568d;
     border-radius: 5px;
     margin: 0 2px;
     color:#440a39;
     &:hover {
-        background-color: #dd74c6;
+        background-color: #dd74d8;
         border-color: #99568d;
     }
 }
