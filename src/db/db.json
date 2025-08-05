@@ -111,30 +111,22 @@
       "dni": 98765432,
       "average": 9.3,
       "id": "16"
-    },
-    {
-      "name": "Miguel",
-      "surname": "Ríos",
-      "age": 23,
-      "dni": 13579246,
-      "average": 8.4,
-      "id": "17"
     }
   ],
   "courses": [
     {
       "id": "1",
-      "name": "Matemáticas",
+      "name": "Matemática",
       "code": "MAT101",
       "credits": 5,
       "description": "Curso introductorio a las matemáticas básicas."
     },
     {
-      "name": "Química",
+      "id": "3",
+      "name": "Químicas",
       "code": "QUI103",
       "credits": 3,
-      "description": "Introducción a la química orgánica e inorgánica.",
-      "id": "3"
+      "description": "Introducción a la química orgánica e inorgánica."
     },
     {
       "name": "Programación",
@@ -165,11 +157,39 @@
       "id": "7"
     },
     {
+      "name": "Física",
+      "code": "FIS102",
+      "credits": 5,
+      "description": "Fundamentos de la física clásica y moderna.",
+      "id": "8"
+    },
+    {
       "name": "Economía",
       "code": "ECO108",
       "credits": 3,
-      "description": "Introducción a los conceptos económicos fundamentales.",
-      "id": "8"
+      "description": "Introducción a los principios económicos y su aplicación.",
+      "id": "9"
+    },
+    {
+      "name": "Arte",
+      "code": "ART109",
+      "credits": 2,
+      "description": "Historia del arte y sus principales corrientes.",
+      "id": "10"
+    },
+    {
+      "name": "Sociología",
+      "code": "SOC110",
+      "credits": 3,
+      "description": "Estudio de la sociedad y sus estructuras.",
+      "id": "11"
+    },
+    {
+      "name": "Psicología",
+      "code": "PSY111",
+      "credits": 4,
+      "description": "Introducción a los conceptos básicos de la psicología.",
+      "id": "12"
     }
   ],
   "inscriptions": [
@@ -290,14 +310,6 @@
       "status": "approved",
       "enrollmentDate": "2024-03-25",
       "id": "15"
-    },
-    {
-      "studentDNI": 98765432,
-      "courseCode": "FIS102",
-      "grade": 8.1,
-      "status": "approved",
-      "enrollmentDate": "2024-04-30",
-      "id": "16"
     }
   ]
 }

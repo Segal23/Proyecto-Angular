@@ -6,10 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Student } from '../shared/entities';
 import { CommonModule } from '@angular/common';
 import { StudentsTable } from '../features/alumnos/students-table/students-table';
-import { AddForm } from "../features/add-form/add-form";
-import { DeleteForm } from '../features/delete-form/delete-form';
 import { MatInputModule } from "@angular/material/input";
-import { EditForm } from '../features/edit-form/edit-form';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -23,7 +20,7 @@ export class AppModule {}
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Toolbar, CommonModule, StudentsTable, AddForm, DeleteForm, EditForm, MatInputModule],
+  imports: [RouterOutlet, Navbar, Toolbar, CommonModule, MatInputModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
