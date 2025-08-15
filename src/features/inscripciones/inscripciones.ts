@@ -25,7 +25,7 @@ export class Inscripciones {
     this.inscripciones$ = this.InscripcionesAPI.getInscripciones();
   }
 
-  deleteStudent(inscription: Inscription) {
+  deleteInscription(inscription: Inscription) {
       this.dialog
         .open(ConfirmDialog, {
           data: {
