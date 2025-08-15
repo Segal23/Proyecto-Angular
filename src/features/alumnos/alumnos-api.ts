@@ -8,7 +8,7 @@ import { ApiPaths } from '../../shared/routes';
   providedIn: 'root'
 })
 export class AlumnosAPI {
-  baseurl = 'http://localhost:3000';
+  baseurl = 'https://689f6b4f6e38a02c5816474c.mockapi.io/';
   constructor(private http :HttpClient) {
 
   }

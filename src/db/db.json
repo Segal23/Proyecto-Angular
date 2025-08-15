@@ -111,6 +111,70 @@
       "dni": 98765432,
       "average": 9.3,
       "id": "16"
+    },
+    {
+      "name": "Fernando",
+      "surname": "Ríos",
+      "age": 23,
+      "dni": 13579246,
+      "average": 8.4,
+      "id": "17"
+    },
+    {
+      "name": "Isabel",
+      "surname": "Moreno",
+      "age": 19,
+      "dni": 24681357,
+      "average": 9.5,
+      "id": "18"
+    },
+    {
+      "name": "Samuel",
+      "surname": "Castillo",
+      "age": 22,
+      "dni": 31415926,
+      "average": 8.9,
+      "id": "19"
+    },
+    {
+      "name": "Valeria",
+      "surname": "Salazar",
+      "age": 20,
+      "dni": 27182818,
+      "average": 9.0,
+      "id": "20"
+    },
+    {
+      "name": "Gabriel",
+      "surname": "Mendoza",
+      "age": 23,
+      "dni": 21354870,
+      "average": 8.3,
+      "id": "21"
+    },
+    {
+      "name": "Natalia",
+      "surname": "Rojas",
+      "age": 19,
+      "dni": 12345678,
+      "average": 9.6,
+      "id": "22"
+    },
+    {
+      "name": "Oscar",
+      "surname": "Gutiérrez",
+      "age": 22,
+      "dni": 87654321,
+      "average": 8.0,
+      "id": "23"
+    },
+    {
+      "name": "Patricia",
+      "surname": "Vega",
+      "age": 21,
+      "dni": 11223344,
+      "average": 9.1,
+      "id": "24"
     }
   ],
   "courses": [
@@ -190,6 +254,90 @@
       "credits": 4,
       "description": "Introducción a los conceptos básicos de la psicología.",
       "id": "12"
+    },
+    {
+      "name": "Geografía",
+      "code": "GEO112",
+      "credits": 3,
+      "description": "Estudio de la geografía física y humana.",
+      "id": "13"
+    },
+    {
+      "name": "Filosofía",
+      "code": "PHI113",
+      "credits": 3,
+      "description": "Análisis de las principales corrientes filosóficas.",
+      "id": "14"
+    },
+    {
+      "name": "Antropología",
+      "code": "ANT114",
+      "credits": 3,
+      "description": "Estudio de las culturas y sociedades humanas.",
+      "id": "15"
+    },
+    {
+      "name": "Ética",
+      "code": "ETH115",
+      "credits": 2,
+      "description": "Fundamentos de la ética y su aplicación en la vida cotidiana.",
+      "id": "16"
+    },
+    {
+      "name": "Derecho",
+      "code": "LAW116",
+      "credits": 4,
+      "description": "Introducción al derecho y sus principales ramas.",
+      "id": "17"
+    },
+    {
+      "name": "Matemáticas Avanzadas",
+      "code": "MAT201",
+      "credits": 5,
+      "description": "Curso avanzado de matemáticas para estudiantes de ingeniería.",
+      "id": "18"
+    },
+    {
+      "name": "Programación Avanzada",
+      "code": "PRO202",
+      "credits": 4,
+      "description": "Curso avanzado de programación en C++.",
+      "id": "19"
+    },
+    {
+      "name": "Física Avanzada",
+      "code": "FIS203",
+      "credits": 5,
+      "description": "Estudio de la física teórica y experimental avanzada.",
+      "id": "20"
+    },
+    {
+      "name": "Química Avanzada",
+      "code": "QUI204",
+      "credits": 4,
+      "description": "Curso avanzado de química orgánica y analítica.",
+      "id": "21"
+    },
+    {
+      "name": "Biología Molecular",
+      "code": "BIO205",
+      "credits": 4,
+      "description": "Estudio de los procesos biológicos a nivel molecular.",
+      "id": "22"
+    },
+    {
+      "name": "Historia Contemporánea",
+      "code": "HIS206",
+      "credits": 3,
+      "description": "Análisis de los eventos históricos más recientes.",
+      "id": "23"
+    },
+    {
+      "name": "Literatura Comparada",
+      "code": "LIT207",
+      "credits": 3,
+      "description": "Estudio comparativo de obras literarias de diferentes culturas.",
+      "id": "24"
     }
   ],
   "inscriptions": [
@@ -310,6 +458,78 @@
       "status": "approved",
       "enrollmentDate": "2024-03-25",
       "id": "15"
+    },
+    {
+      "studentDNI": 98765432,
+      "courseCode": "FIS102",
+      "grade": 8.6,
+      "status": "approved",
+      "enrollmentDate": "2024-04-30",
+      "id": "16"
+    },
+    {
+      "studentDNI": 13579246,
+      "courseCode": "QUI103",
+      "grade": 9.3,
+      "status": "approved",
+      "enrollmentDate": "2024-05-15",
+      "id": "17"
+    },
+    {
+      "studentDNI": 24681357,
+      "courseCode": "PRO104",
+      "grade": 8.1,
+      "status": "approved",
+      "enrollmentDate": "2024-06-20",
+      "id": "18"
+    },
+    {
+      "studentDNI": 31415926,
+      "courseCode": "HIS105",
+      "grade": 9.0,
+      "status": "approved",
+      "enrollmentDate": "2024-07-25",
+      "id": "19"
+    },
+    {
+      "studentDNI": 27182818,
+      "courseCode": "MAT101",
+      "grade": 8.5,
+      "status": "approved",
+      "enrollmentDate": "2024-08-30",
+      "id": "20"
+    },
+    {
+      "studentDNI": 21354870,
+      "courseCode": "FIS102",
+      "grade": 9.2,
+      "status": "approved",
+      "enrollmentDate": "2024-09-15",
+      "id": "21"
+    },
+    {
+      "studentDNI": 12345678,
+      "courseCode": "QUI103",
+      "grade": 8.4,
+      "status": "approved",
+      "enrollmentDate": "2024-10-20",
+      "id": "22"
+    },
+    {
+      "studentDNI": 87654321,
+      "courseCode": "PRO104",
+      "grade": 9.1,
+      "status": "approved",
+      "enrollmentDate": "2024-11-25",
+      "id": "23"
+    },
+    {
+      "studentDNI": 11223344,
+      "courseCode": "HIS105",
+      "grade": 8.0,
+      "status": "approved",
+      "enrollmentDate": "2024-12-30",
+      "id": "24"
     }
   ]
 }
