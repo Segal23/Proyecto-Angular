@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { InscripcionesAPI } from './inscripciones-api';
 import { Inscription } from '../../shared/entities';
-import { Observable, switchMap } from 'rxjs';
+import { filter, Observable, of, switchMap, tap } from 'rxjs';
 import { InscriptionsTable } from "./inscriptions-table/inscriptions-table";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -25,38 +25,33 @@ export class Inscripciones {
     this.inscripciones$ = this.InscripcionesAPI.getInscripciones();
   }
 
-  // deleteInscription(inscription : Inscription) {
-  //   this.inscripciones$ = this.InscripcionesAPI.deleteInscripcion(inscription).pipe(
-  //     switchMap(() => this.InscripcionesAPI.getInscripciones())
-  //   );
-  // }
-
-  async deleteInscription(inscription: Inscription) {
-    const confirmed = await this.dialog
-      .open(ConfirmDialog, {
-        data: {
-          message: `¿Estás seguro de que desea eliminar la inscripción del DNI: ${inscription.studentDNI} y código de curso: ${inscription.courseCode}?`,
-          title: 'Confirmar acción',
-        },
-        panelClass: 'custom-dialog-container'
-      })
-      .afterClosed()
-      .toPromise();
-
-    if (confirmed) {
-      this.inscripciones$ = this.InscripcionesAPI.deleteInscripcion(inscription).pipe(
-        switchMap(() => {
-          this.snackBar.open('Inscripción eliminada correctamente', 'Cerrar', {
-            duration: 2000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom',
-            panelClass: ['success-snackbar']
-          });
-          return this.InscripcionesAPI.getInscripciones();
+  deleteStudent(inscription: Inscription) {
+      this.dialog
+        .open(ConfirmDialog, {
+          data: {
+            message: `¿Estás seguro de que desea eliminar la inscripción del DNI: ${inscription.studentDNI}?`,
+            title: 'Confirmar acción',
+          },
+          panelClass: 'custom-dialog-container'
         })
-      );
+        .afterClosed()
+        .pipe(
+          filter(confirmed => confirmed),
+          switchMap(() => this.InscripcionesAPI.deleteInscripcion(inscription)),
+          tap(() => {
+            this.snackBar.open('Inscripción eliminada correctamente', 'Cerrar', {
+              duration: 2000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              panelClass: ['success-snackbar']
+            });
+          }),
+          switchMap(() => this.InscripcionesAPI.getInscripciones())
+        )
+        .subscribe(inscripciones => {
+          this.inscripciones$ = of(inscripciones);
+        });
     }
-  }
 
   editInscription(inscription : Inscription) {
     this.inscripciones$ = this.InscripcionesAPI.editInscripcion(inscription).pipe(

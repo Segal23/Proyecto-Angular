@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CursosAPI } from './cursos-api';
 import { Course } from '../../shared/entities';
-import { Observable, switchMap } from 'rxjs';
+import { filter, Observable, of, switchMap, tap } from 'rxjs';
 import { CoursesTable } from "./courses-table/courses-table";
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,44 +24,36 @@ export class Cursos {
     this.cursos$ = this.CursosAPI.getCursos();
   }
 
-  // deleteCourse(course : Course) {
-  //   console.log('Eliminando curso:', course);
-  //   this.cursos$ = this.CursosAPI.deleteCurso(course).pipe(
-  //     // Actualizar la lista de alumnos después de eliminar uno
-  //     switchMap(() => this.CursosAPI.getCursos())
-  //   );
-  // }
-
-  async deleteCourse(course: Course) {
-    const confirmed = await this.dialog
-      .open(ConfirmDialog, {
-        data: {
-          message: `¿Estás seguro de que deseas eliminar el curso ${course.name}?`,
-          title: 'Confirmar acción',
-        },
-        panelClass: 'custom-dialog-container'
-      })
-      .afterClosed()
-      .toPromise();
-
-    if (confirmed) {
-      this.cursos$ = this.CursosAPI.deleteCurso(course).pipe(
-        switchMap(() => {
-          this.snackBar.open('Curso eliminado correctamente', 'Cerrar', {
-            duration: 2000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom',
-            panelClass: ['success-snackbar']
-          });
-          return this.CursosAPI.getCursos();
+  deleteCourse(course: Course) {
+      this.dialog
+        .open(ConfirmDialog, {
+          data: {
+            message: `¿Estás seguro de que deseas eliminar el curso ${course.name}?`,
+            title: 'Confirmar acción',
+          },
+          panelClass: 'custom-dialog-container'
         })
-      );
+        .afterClosed()
+        .pipe(
+          filter(confirmed => confirmed),
+          switchMap(() => this.CursosAPI.deleteCurso(course)),
+          tap(() => {
+            this.snackBar.open('Curso eliminado correctamente', 'Cerrar', {
+              duration: 2000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              panelClass: ['success-snackbar']
+            });
+          }),
+          switchMap(() => this.CursosAPI.getCursos())
+        )
+        .subscribe(cursos => {
+          this.cursos$ = of(cursos);
+        });
     }
-  }
-  
+
   editCourse(course: Course) {
     this.cursos$ = this.CursosAPI.editCurso(course).pipe(
-      // Actualizar la lista de alumnos después de editar uno
       switchMap(() => this.CursosAPI.getCursos())
     );
   }

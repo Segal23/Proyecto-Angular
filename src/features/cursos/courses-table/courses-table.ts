@@ -27,7 +27,6 @@ export class CoursesTable {
   }
 
   deleteCourse(course: Course) {
-    console.log('Eliminando curso:', course);
     this.deleteEvent.emit(course);
   }
 
