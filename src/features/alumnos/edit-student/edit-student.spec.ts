@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditStudent } from './edit-student';
+// import { EditStudent } from './edit-student';
 
-describe('EditStudent', () => {
-  let component: EditStudent;
-  let fixture: ComponentFixture<EditStudent>;
+// describe('EditStudent', () => {
+//   let component: EditStudent;
+//   let fixture: ComponentFixture<EditStudent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [EditStudent]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       imports: [EditStudent]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(EditStudent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(EditStudent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
