@@ -12,7 +12,12 @@ export class NotFound {
   constructor(private router: Router){}
 
   backToHome(){
-      this.router.navigate(['/']);
+    const stored = localStorage.getItem('auth');
+    if(stored){
+      this.router.navigate(['/alumnos']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
 }
