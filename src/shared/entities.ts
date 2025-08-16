@@ -23,3 +23,16 @@ export interface Inscription{
     enrollmentDate: string;
     id: number;
 }
+
+export interface User{
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+    dni: number;
+    username: string;
+    password: string;
+    role: string;
+    isActive: boolean;
+    createdAt: string;
+}
