@@ -8,6 +8,7 @@ export enum RoutePaths {
     EDIT_STUDENT = 'edit-student',
     EDIT_COURSE = 'edit-course',
     EDIT_INSCRIPTION = 'edit-inscription',
+    USUARIOS = "USUARIOS",
 }
 
 export enum ApiPaths{
