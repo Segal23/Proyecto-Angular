@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/auth-service';
 import { Router } from '@angular/router';
+import { RoutePaths } from '../../shared/routes';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,6 @@ export class Login {
     });
   }
 
-  // getter para usar en el HTML
   get username() {
     return this.loginForm.get('username');
   }
@@ -43,11 +43,13 @@ export class Login {
     if (this.loginForm.invalid) return;
   
     const { username, password } = this.loginForm.value;
-    try {
-      this.authService.login(username, password);
-      this.router.navigate(['/alumnos']);
-    } catch (err: any) {
-      this.errorMsg = err.message; 
-    }
+  
+    this.authService.login(username, password).subscribe(success => {
+      if (success) {
+        this.router.navigate(['/alumnos']);
+      } else {
+        this.errorMsg = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
 }

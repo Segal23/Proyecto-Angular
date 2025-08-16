@@ -1,48 +1,53 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AuthState, loginSuccess, logout } from './auth.reducer';
-import { Router } from '@angular/router';
-
-interface User {
-  user: string;
-  pass: string;
-  role: 'admin' | 'user';
-}
+import { of, Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { UsuariosAPI } from '../../features/usuarios/usuarios-api';
+import { loginSuccess, logout } from './auth.actions';
+import { AuthState } from './auth.reducer';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private users: User[] = [
-    { user: 'admin', pass: 'Admin123!', role: 'admin' },
-    { user: 'user1', pass: 'User123!', role: 'user' },
-    { user: 'user2', pass: 'User456!', role: 'user' }
-  ];
 
-  constructor(private store: Store<{ auth: AuthState }>, private router: Router) {}
+  constructor(
+    private store: Store<{ auth: AuthState }>,
+    private usuariosAPI: UsuariosAPI
+  ) {}
 
-  loadAuthFromStorage(): Promise<void> {
-    return new Promise(resolve => {
-      const stored = localStorage.getItem('auth');
-      if (stored) {
-        const { user, role } = JSON.parse(stored);
-        this.store.dispatch(loginSuccess({ user, role }));
-      }
-      resolve();
-    });
+  login(username: string, password: string): Observable<boolean> {
+    return this.usuariosAPI.getUsuarios().pipe(
+      map(users => {
+        const user = users.find(u => u.username === username && u.password === password);
+        if (!user) return false;
+
+        const role: 'admin' | 'user' = user.role === 'admin' ? 'admin' : 'user';
+        const authData = { user: user.username, role };
+        localStorage.setItem('auth', JSON.stringify(authData));
+        return authData;
+      }),
+      tap(authData => {
+        if (authData) {
+          this.store.dispatch(loginSuccess(authData as { user: string; role: 'admin' | 'user' }));
+        }
+      }),
+      map(authData => !!authData), 
+      catchError(err => {
+        console.error('Error login API', err);
+        return of(false); 
+      })
+    );
   }
 
-  login(username: string, password: string): void {
-    const found = this.users.find(u => u.user === username && u.pass === password);
-    if (!found) {
-      throw new Error('Usuario o contraseña incorrectos');
-    }
-
-    localStorage.setItem('auth', JSON.stringify({ user: found.user, role: found.role }));
-    this.store.dispatch(loginSuccess({ user: found.user, role: found.role }));
-  }
-
-  logout(): void {
+  logout() {
     localStorage.removeItem('auth');
     this.store.dispatch(logout());
-    this.router.navigateByUrl('/login');
+  }
+
+  loadAuthFromStorage() {
+    const saved = localStorage.getItem('auth');
+    if (saved) {
+      const authState = JSON.parse(saved);
+      this.store.dispatch(loginSuccess(authState));
+    }
   }
 }
