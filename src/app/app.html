@@ -1,9 +1,13 @@
-<div class="container">
-  <app-toolbar class="toolbar"></app-toolbar>
-  <app-navbar  actclass="navbar"></app-navbar>
-  <div class="content">
+<div class="container" *ngIf="auth$ | async as auth">
+  <ng-container *ngIf="auth.user; else loginOnly">
+    <app-toolbar class="toolbar"></app-toolbar>
+    <app-navbar class="navbar"></app-navbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-container>
 
+  <ng-template #loginOnly>
     <router-outlet></router-outlet>
-
-  </div>
+  </ng-template>
 </div>
