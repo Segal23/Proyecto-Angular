@@ -3,6 +3,7 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, take, map } from 'rxjs';
 import { AuthState } from './auth.reducer';
+import { RoutePaths } from '../../shared/routes';
 
 @Injectable({ providedIn: 'root' })
 export class AuthRedirectGuard implements CanActivate {
@@ -11,7 +12,7 @@ export class AuthRedirectGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> {
     return this.store.select('auth').pipe(
       take(1),
-      map(auth => auth.user ? this.router.createUrlTree(['/alumnos']) : this.router.createUrlTree(['/login']))
+      map(auth => auth.user ? this.router.createUrlTree([RoutePaths.ALUMNOS]) : this.router.createUrlTree([RoutePaths.LOGIN]))
     );
   }
 }
