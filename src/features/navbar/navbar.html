@@ -1,16 +1,12 @@
-
 <div class="navbar">
     <h2>Menú</h2>
     <ul>
-        <li>
-            <a routerLink='/alumnos'>Alumnos</a>
+        <li><a routerLink='/alumnos'>Alumnos</a></li>
+        <li><a routerLink='/cursos'>Cursos</a></li>
+        <li><a routerLink='/inscripciones'>Inscripciones</a></li>
+        <li *ngIf="(role$ | async) === 'admin'">
+            <a routerLink='/usuarios'>Usuarios</a>
         </li>
-        <li>
-            <a routerLink='/cursos'>Cursos</a>
-        </li>
-        <li>
-            <a routerLink='/inscripciones'>Inscripciones</a>
-        </li>
+        <li><a (click)="logout()">Logout</a></li>
     </ul>
 </div>
-
