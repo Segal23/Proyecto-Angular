@@ -5,14 +5,18 @@ export enum RoutePaths {
     VIEW_STUDENT = 'view-student',
     VIEW_COURSE = 'view-course',
     VIEW_INSCRIPTION = 'view-inscription',
+    VIEW_USER = 'view-user',
     EDIT_STUDENT = 'edit-student',
     EDIT_COURSE = 'edit-course',
     EDIT_INSCRIPTION = 'edit-inscription',
-    USUARIOS = "USUARIOS",
+    EDIT_USER = 'edit-user',
+    USUARIOS = "usuarios",
+    LOGIN = "login"
 }
 
 export enum ApiPaths{
     COURSES = 'courses',
     INSCRIPTIONS = 'inscriptions',
     STUDENTS = 'students',
+    USERS = 'users'
 }

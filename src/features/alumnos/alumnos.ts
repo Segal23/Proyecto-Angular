@@ -54,7 +54,6 @@ export class Alumnos {
 
   editStudent(student: Student) {
     this.alumnos$ = this.AlumnosAPI.editAlumno(student).pipe(
-      // Actualizar la lista de alumnos después de editar uno
       switchMap(() => this.AlumnosAPI.getAlumnos())
     );
   }

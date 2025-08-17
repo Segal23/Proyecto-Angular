@@ -1,4 +1,5 @@
 .navbar{
+    align-self: self-start;
     border: none;
     background-color: #7cdada;;
     display: flex;

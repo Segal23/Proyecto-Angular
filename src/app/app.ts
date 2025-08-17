@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, Toolbar, Navbar, CommonModule],
-  templateUrl: './app.html'
+  templateUrl: './app.html',
+  styleUrls: ['./app.css']
 })
 export class App {
   auth$: Observable<AuthState>;

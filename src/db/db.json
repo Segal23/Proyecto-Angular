@@ -531,5 +531,67 @@
       "enrollmentDate": "2024-12-30",
       "id": "24"
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "John",
+      "surname": "Doe",
+      "email": "john.doe@gmail.com",
+      "dni": 12345678,
+      "username": "admin",
+      "password": "Admin123!",
+      "role": "admin",
+      "isActive": true,
+      "createdAt": "2023-01-01T00:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Thomas",
+      "surname": "Garret",
+      "email": "thomas.garret@gmail.com",
+      "dni": 21365874,
+      "username": "tgarret",
+      "password": "User#001",
+      "role": "user",
+      "isActive": true,
+      "createdAt": "2021-02-08T00:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Juan",
+      "surname": "Perez",
+      "email": "jperez@gmail.com",
+      "dni": 33125896,
+      "username": "jperez",
+      "password": "M0zt4z4#001",
+      "role": "user",
+      "isActive": true,
+      "createdAt": "2024-11-25T00:00:00Z"
+    },
+    {
+      "id": "4",
+      "name": "Ana",
+      "surname": "Corrales",
+      "email": "a.corrales@gmail.com",
+      "dni": 28479651,
+      "username": "acorrales",
+      "password": "M0zt4z4#001",
+      "role": "user",
+      "isActive": true,
+      "createdAt": "2022-10-21T00:00:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Laura",
+      "surname": "Gonzalez",
+      "email": "Laugonzalez@gmail.com",
+      "dni": 38154852,
+      "username": "lgonzalez",
+      "password": "M0zt4z4#001",
+      "role": "admin",
+      "isActive": true,
+      "createdAt": "2025-07-03T00:00:00Z"
+    }
   ]
 }

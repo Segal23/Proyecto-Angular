@@ -24,7 +24,7 @@ export class Login {
         Validators.required,
         Validators.minLength(8),
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/)
-      ]]
+      ]],   
     });
   }
 
@@ -46,7 +46,7 @@ export class Login {
   
     this.authService.login(username, password).subscribe(success => {
       if (success) {
-        this.router.navigate(['/alumnos']);
+        this.router.navigate([RoutePaths.ALUMNOS]);
       } else {
         this.errorMsg = 'Usuario o contraseña incorrectos';
       }
