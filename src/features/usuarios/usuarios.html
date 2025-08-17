@@ -1,0 +1,10 @@
+<div *ngIf="usuarios$ | async as usuarios; else loading">
+    <app-users-table (editEvent)="editUser($event)" (deleteEvent)="deleteUser($event)" [users]="usuarios"></app-users-table>
+</div>
+
+<ng-template #loading>
+    <div class="spinner-container">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p class="loading-text">Cargando usuarios...</p>
+    </div>
+</ng-template>

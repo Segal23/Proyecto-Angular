@@ -1,0 +1,59 @@
+<h2>Detalle del usuario</h2>
+<form [formGroup]="viewUser" class="view-form">
+
+    <div class="form-row">
+        <mat-form-field appearance="outline" >
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="dni" readonly />
+        </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" readonly />
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="surname" readonly/>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email" readonly />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="username" readonly />
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" readonly />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Rol</mat-label>
+            <input matInput formControlName="role" readonly />
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Activo</mat-label>
+            <input  matInput formControlName="isActive" readonly />
+        </mat-form-field>
+    </div>
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Creado</mat-label>
+            <input matInput formControlName="createdAt" readonly />
+        </mat-form-field>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+<h2>Detalle del usuario</h2>
+<form [formGroup]="editUser" class="edit-form">
+
+    <div class="form-row">
+        <mat-form-field appearance="outline" >
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="dni" (blur)="validarCampos()" readonly class="input-dni" />
+        </mat-form-field>
+    </div>
+    
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" (blur)="validarCampos()" />
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="surname" (blur)="validarCampos()"/>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput formControlName="email" (blur)="validarCampos()" />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="username" (blur)="validarCampos()" />
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" (blur)="validarCampos()" />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="role" (selectionChange)="validarCampos()">
+                <mat-option value="admin">Admin</mat-option>
+                <mat-option value="user">User</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Activo</mat-label>
+            <mat-select formControlName="isActive" (selectionChange)="validarCampos()">
+                <mat-option [value]="true">Sí</mat-option>
+                <mat-option [value]="false">No</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Creado</mat-label>
+            <input matInput formControlName="createdAt" (blur)="validarCampos()" readonly="true" class="input-createdAt" />
+        </mat-form-field>
+    </div>
+
+    <button type="submit" (click)="onSubmit()">Actualizar</button>
+</form>
