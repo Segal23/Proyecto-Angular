@@ -26,10 +26,10 @@
         <button (click)="viewDetails(element)" matTooltip="Ver">
             <mat-icon class="view-icon">visibility</mat-icon>
         </button>
-        <button (click)="editInscription(element)" matTooltip="Editar">
+        <button *ngIf="(authService.role$ | async) === 'admin'" (click)="editInscription(element)" matTooltip="Editar">
             <mat-icon class="edit-icon">edit</mat-icon>
         </button>  
-        <button (click)="deleteInscription(element)" matTooltip="Eliminar">
+        <button *ngIf="(authService.role$ | async) === 'admin'" (click)="deleteInscription(element)" matTooltip="Eliminar">
           <mat-icon class="delete-icon">delete</mat-icon>
         </button>
       </td>

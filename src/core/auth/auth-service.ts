@@ -14,6 +14,14 @@ export class AuthService {
     private usuariosAPI: UsuariosAPI
   ) {}
 
+  get authState$() {
+    return this.store.select('auth');
+  }
+
+  get role$() {
+    return this.store.select(state => state.auth.role);
+  }
+
   login(username: string, password: string): Observable<boolean> {
     return this.usuariosAPI.getUsuarios().pipe(
       map(users => {

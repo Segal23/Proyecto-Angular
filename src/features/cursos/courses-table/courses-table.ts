@@ -1,14 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Course } from '../../../shared/entities';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { RoutePaths } from '../../../shared/routes';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AuthService } from '../../../core/auth/auth-service';
+import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-courses-table',
-  imports: [MatTableModule, MatIconModule, MatTooltipModule],
+  imports: [MatTableModule, MatIconModule, MatTooltipModule, CommonModule],
   templateUrl: './courses-table.html',
   styleUrl: './courses-table.css'
 })
@@ -18,10 +21,23 @@ export class CoursesTable {
   @Output() deleteEvent = new EventEmitter<Course>();
   @Output() editEvent = new EventEmitter<Course>();
 
+  isAdmin: boolean = false;
   displayedColumns: string[] = ['name', 'code', 'credits', 'description', 'actions'];
 
-  constructor(private router: Router){}
+  private roleSub: Subscription;
 
+  constructor(private router: Router, public authService: AuthService) {
+    this.roleSub = this.authService.role$.subscribe(role => {
+      this.isAdmin = role === 'admin';
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.roleSub) {
+      this.roleSub.unsubscribe();
+    }
+  }
+  
   viewDetails(course: Course) {
     this.router.navigate([`/${RoutePaths.VIEW_COURSE}`, ], { state: { course : course } });
   }

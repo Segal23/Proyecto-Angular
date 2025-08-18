@@ -66,19 +66,19 @@ export const routes: Routes = [
         path: RoutePaths.EDIT_STUDENT,
         loadComponent: () => import('../features/alumnos/edit-student/edit-student').then(m => m.EditStudent),
         data: { title: 'Editar Alumno' } ,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminGuard]
     },
     {
         path: RoutePaths.EDIT_COURSE,
         loadComponent: () => import('../features/cursos/edit-course/edit-course').then(m => m.EditCourse),
         data: { title: 'Editar Curso' } ,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminGuard]
     },
     {
         path: RoutePaths.EDIT_INSCRIPTION,
         loadComponent: () => import('../features/inscripciones/edit-inscription/edit-inscription').then(m => m.EditInscription),
         data: { title: 'Editar Inscripción' } ,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, AdminGuard]
     },
     {
         path: RoutePaths.EDIT_USER,
