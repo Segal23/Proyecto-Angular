@@ -18,22 +18,35 @@ export class Toolbar implements OnInit {
   auth$: Observable<AuthState>;
   fullTitle: string = 'Gestor Académico';
 
-  constructor(private store: Store<{ auth: AuthState }>, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private store: Store<{ auth: AuthState }>,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.auth$ = this.store.select(selectAuth);
   }
 
   ngOnInit() {
+    this.updateTitle();
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
-      map(() => {
-        let route = this.activatedRoute.firstChild;
-        while (route?.firstChild) {
-          route = route.firstChild;
-        }
-        return route?.snapshot.data['title'];
-      })
+      map(() => this.getDeepestTitle())
     ).subscribe(title => {
       this.fullTitle = title ? `Gestor Académico - ${title}` : 'Gestor Académico';
     });
+  }
+
+  private getDeepestTitle(): string | undefined {
+    let route = this.activatedRoute.firstChild;
+    while (route?.firstChild) {
+      route = route.firstChild;
+    }
+    return route?.snapshot.data['title'];
+  }
+
+  private updateTitle() {
+    const title = this.getDeepestTitle();
+    this.fullTitle = title ? `Gestor Académico - ${title}` : 'Gestor Académico';
   }
 }
