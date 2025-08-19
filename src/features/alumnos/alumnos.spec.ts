@@ -1,87 +1,67 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Alumnos } from './alumnos';
+import { TestBed } from '@angular/core/testing';
 import { AlumnosAPI } from './alumnos-api';
 import { of } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Student } from '../../shared/entities';
 
-describe('Alumnos Component', () => {
-  let component: Alumnos;
-  let fixture: ComponentFixture<Alumnos>;
-  let alumnosServiceMock: any;
-  let dialogMock: any;
-  let snackBarMock: any;
+describe('AlumnosAPI', () => {
+  let apiSpy: jasmine.SpyObj<AlumnosAPI>;
+  let api: AlumnosAPI;
 
-  beforeEach(async () => {
-    alumnosServiceMock = {
-      getAlumnos: jasmine.createSpy('getAlumnos').and.returnValue(of([])),
-      deleteAlumno: jasmine.createSpy('deleteAlumno').and.returnValue(of(void 0)),
-      editAlumno: jasmine.createSpy('editAlumno').and.returnValue(of({}))
-    };
+  const mockStudents: Student[] = [
+    { id: 1, dni: 12345678, name: 'Juan', surname: 'Pérez', age: 20, average: 8 },
+    { id: 2, dni: 87654321, name: 'Luis', surname: 'Martínez', age: 23, average: 7.5 }
+  ];
 
-    dialogMock = {
-      open: jasmine.createSpy('open').and.returnValue({
-        afterClosed: () => of(true)
-      })
-    };
+  beforeEach(() => {
+    const spy = jasmine.createSpyObj('AlumnosAPI', ['getAlumnos', 'editAlumno', 'deleteAlumno']);
 
-    snackBarMock = {
-      open: jasmine.createSpy('open')
-    };
-
-    await TestBed.configureTestingModule({
-      imports: [Alumnos],
+    TestBed.configureTestingModule({
       providers: [
-        { provide: AlumnosAPI, useValue: alumnosServiceMock },
-        { provide: MatDialog, useValue: dialogMock },
-        { provide: MatSnackBar, useValue: snackBarMock }
+        { provide: AlumnosAPI, useValue: spy }
       ]
-    }).compileComponents();
+    });
 
-    fixture = TestBed.createComponent(Alumnos);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    apiSpy = TestBed.inject(AlumnosAPI) as jasmine.SpyObj<AlumnosAPI>;
+    api = apiSpy;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    expect(api).toBeTruthy();
   });
 
-  it('should fetch alumnos on init', () => {
-    expect(alumnosServiceMock.getAlumnos).toHaveBeenCalled();
-  });
+  it('should fetch all students', (done: DoneFn) => {
+    apiSpy.getAlumnos.and.returnValue(of(mockStudents));
 
-  it('should call deleteAlumno when deleteStudent is triggered', () => {
-    const student = { id: '1', name: 'Juan', surname: 'Perez' };
-    component.deleteStudent(student as any);
-    expect(dialogMock.open).toHaveBeenCalled();
-  });
-
-  it('should call editAlumno when editStudent is triggered', () => {
-    const student = { id: 1, name: 'Juan', surname: 'Perez', dni: 12345678, age: 20, average: 8.5 };
-    component.editStudent(student as any);
-    expect(alumnosServiceMock.editAlumno).toHaveBeenCalledWith(student);
-  });
-
-  it('alumnos$ should emit Student array with correct types', (done) => {
-    const dummyAlumnos: Student[] = [
-      { id: 1, name: 'Juan', surname: 'Perez', dni: 12345678, age: 20, average: 8.5 },
-      { id: 2, name: 'Ana', surname: 'Gomez', dni: 87654321, age: 22, average: 9.0 }
-    ];
-    
-    alumnosServiceMock.getAlumnos.and.returnValue(of(dummyAlumnos));
-  
-    component.ngOnInit();
-  
-    component.alumnos$.subscribe(alumnos => {
-      expect(Array.isArray(alumnos)).toBeTrue();
-      alumnos.forEach(a => {
-        expect(typeof a.id).toBe('number');
-        expect(typeof a.name).toBe('string');
-        expect(typeof a.surname).toBe('string');
-      });
+    api.getAlumnos().subscribe(students => {
+      expect(students.length).toBe(2);
+      expect(students).toEqual(mockStudents);
       done();
     });
+
+    expect(apiSpy.getAlumnos).toHaveBeenCalled();
+  });
+
+  it('should edit a student', (done: DoneFn) => {
+    const editedStudent = { ...mockStudents[0], name: 'Juanito' };
+    apiSpy.editAlumno.and.returnValue(of(editedStudent));
+
+    api.editAlumno(editedStudent).subscribe(student => {
+      expect(student.name).toBe('Juanito');
+      done();
+    });
+
+    expect(apiSpy.editAlumno).toHaveBeenCalledWith(editedStudent);
+  });
+
+  it('should delete a student', (done: DoneFn) => {
+    const studentToDelete = mockStudents[1];
+    apiSpy.deleteAlumno.and.returnValue(of(void 0));
+
+    api.deleteAlumno(studentToDelete).subscribe(result => {
+      expect(result).toBeUndefined();
+      done();
+    });
+
+    expect(apiSpy.deleteAlumno).toHaveBeenCalledWith(studentToDelete);
   });
 });

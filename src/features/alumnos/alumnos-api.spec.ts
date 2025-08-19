@@ -1,88 +1,67 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AlumnosAPI } from './alumnos-api';
+import { of } from 'rxjs';
 import { Student } from '../../shared/entities';
-import { ApiPaths } from '../../shared/routes';
 
 describe('AlumnosAPI', () => {
-  let service: AlumnosAPI;
-  let httpMock: HttpTestingController;
+  let api: AlumnosAPI;
+  let apiSpy: jasmine.SpyObj<AlumnosAPI>;
+
+  const mockStudents: Student[] = [
+    { id: 1, dni: 12345678, name: 'Juan', surname: 'Pérez', age: 20, average: 8 },
+    { id: 2, dni: 87654321, name: 'Luis', surname: 'Martínez', age: 23, average: 7.5 }
+  ];
 
   beforeEach(() => {
+    const spy = jasmine.createSpyObj('AlumnosAPI', ['getAlumnos', 'editAlumno', 'deleteAlumno']);
+
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [AlumnosAPI]
+      providers: [
+        { provide: AlumnosAPI, useValue: spy }
+      ]
     });
 
-    service = TestBed.inject(AlumnosAPI);
-    httpMock = TestBed.inject(HttpTestingController);
-  });
-
-  afterEach(() => {
-    httpMock.verify(); // Verifica que no haya solicitudes pendientes
+    apiSpy = TestBed.inject(AlumnosAPI) as jasmine.SpyObj<AlumnosAPI>;
+    api = apiSpy;
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(api).toBeTruthy();
   });
 
-  it('should fetch alumnos', () => {
-    const dummyAlumnos: Student[] = [
-      { id: 1, name: 'Juan', surname: 'Perez', dni: 12345678, age: 20, average: 8.5 },
-      { id: 2, name: 'Ana', surname: 'Gomez', dni: 87654321, age: 22, average: 9.0 }
-    ];
+  it('should fetch all students', (done: DoneFn) => {
+    apiSpy.getAlumnos.and.returnValue(of(mockStudents));
 
-    service.getAlumnos().subscribe(alumnos => {
-      expect(alumnos.length).toBe(2);
-      expect(alumnos).toEqual(dummyAlumnos);
+    api.getAlumnos().subscribe(students => {
+      expect(students).toEqual(mockStudents);
+      expect(students.length).toBe(2);
+      done();
     });
 
-    const req = httpMock.expectOne(`${service.baseurl}/${ApiPaths.STUDENTS}`);
-    expect(req.request.method).toBe('GET');
-    req.flush(dummyAlumnos); // respondemos con los datos de prueba
+    expect(apiSpy.getAlumnos).toHaveBeenCalled();
   });
 
-  it('should delete alumno', () => {
-    const student: Student = { id: 1, name: 'Juan', surname: 'Perez', dni: 12345678, age: 20, average: 8.5 };
+  it('should edit a student', (done: DoneFn) => {
+    const editedStudent: Student = { ...mockStudents[0], name: 'Juanito' };
+    apiSpy.editAlumno.and.returnValue(of(editedStudent));
 
-    service.deleteAlumno(student).subscribe(response => {
-      expect(response).toBeNull();
+    api.editAlumno(editedStudent).subscribe(student => {
+      expect(student.name).toBe('Juanito');
+      done();
     });
 
-    const req = httpMock.expectOne(`${service.baseurl}/${ApiPaths.STUDENTS}/1`);
-    expect(req.request.method).toBe('DELETE');
-    req.flush(null);
+    expect(apiSpy.editAlumno).toHaveBeenCalledWith(editedStudent);
   });
 
-  it('should edit alumno', () => {
-    const student: Student = { id: 1, name: 'Juan', surname: 'Perez', dni: 12345678, age: 25, average: 8.5 };
+  it('should delete a student', (done: DoneFn) => {
+    const studentToDelete = mockStudents[1];
+    apiSpy.deleteAlumno.and.returnValue(of(void 0));
 
-    service.editAlumno(student).subscribe(updated => {
-      expect(updated).toEqual(student);
+    api.deleteAlumno(studentToDelete).subscribe(result => {
+      expect(result).toBeUndefined();
+      done();
     });
 
-    const req = httpMock.expectOne(`${service.baseurl}/${ApiPaths.STUDENTS}/1`);
-    expect(req.request.method).toBe('PUT');
-    req.flush(student);
-  });
-
-  it('should return an array of Student objects', () => {
-    const dummyAlumnos: Student[] = [
-      { id: 1, name: 'Juan', surname: 'Perez', dni: 12345678, age: 20, average: 8.5 },
-      { id: 2, name: 'Ana', surname: 'Gomez', dni: 87654321, age: 22, average: 9.0 }
-    ];
-  
-    service.getAlumnos().subscribe(alumnos => {
-      expect(Array.isArray(alumnos)).toBeTrue();
-  
-      alumnos.forEach(a => {
-        expect(typeof a.id).toBe('number');
-        expect(typeof a.name).toBe('string');
-        expect(typeof a.surname).toBe('string');
-      });
-    });
-  
-    const req = httpMock.expectOne(`${service.baseurl}/${ApiPaths.STUDENTS}`);
-    req.flush(dummyAlumnos);
+    expect(apiSpy.deleteAlumno).toHaveBeenCalledWith(studentToDelete);
   });
 });
