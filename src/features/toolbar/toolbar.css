@@ -4,5 +4,6 @@
     border: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background-color: #7cdada;
-    text-align: center;
+    text-align: center;   
+    padding-bottom: 10px;
 }

@@ -66,7 +66,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<ng-template [ngIf]="alumnos.length === 0">
-    <p>No hay alumnos inscriptos en este curso.</p>
-</ng-template>

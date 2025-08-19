@@ -4,20 +4,20 @@
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-        <mat-label>DNI</mat-label>
-        <input matInput formControlName="dni" readonly />
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="dni" readonly />
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="name" readonly />
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" readonly />
         </mat-form-field>
-
+    
         <mat-form-field appearance="outline">
-        <mat-label>Apellido</mat-label>
-        <input matInput formControlName="surname" readonly />
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="surname" readonly />
         </mat-form-field>
     </div>
 
@@ -71,7 +71,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<ng-template [ngIf]="cursos.length === 0">
-    <p>Este alumno no está inscrito en ningún curso.</p>
-</ng-template>

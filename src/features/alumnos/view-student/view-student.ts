@@ -10,10 +10,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-view-student',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, MatTableModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, MatTableModule, MatProgressSpinnerModule],
   templateUrl: './view-student.html',
   styleUrls: ['./view-student.css']
 })
@@ -53,7 +54,7 @@ export class ViewStudent implements OnInit {
     const role = await firstValueFrom(this.authService.role$);
     this.isAdmin = role === 'admin';
     if (this.isAdmin) this.displayedColumns.push('actions');
-
+    
     this.inscripcionesAPI.getCursosByStudent(this.student.dni).subscribe(cursos => {
       this.cursos = cursos;
     });
