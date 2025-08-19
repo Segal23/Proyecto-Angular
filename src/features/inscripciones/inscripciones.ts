@@ -37,7 +37,7 @@ export class Inscripciones {
         .afterClosed()
         .pipe(
           filter(confirmed => confirmed),
-          switchMap(() => this.InscripcionesAPI.deleteInscripcion(inscription)),
+          switchMap(() => this.InscripcionesAPI.deleteInscripcion(inscription.id.toString())),
           tap(() => {
             this.snackBar.open('Inscripción eliminada correctamente', 'Cerrar', {
               duration: 2000,

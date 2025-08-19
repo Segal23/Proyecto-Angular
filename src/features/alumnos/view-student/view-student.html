@@ -1,34 +1,77 @@
 <h2>Detalle del estudiante</h2>
+
 <form [formGroup]="viewStudent" class="view-form">
 
     <div class="form-row">
-        <mat-form-field appearance="outline" >
-            <mat-label>DNI</mat-label>
-            <input matInput formControlName="dni" readonly />
-        </mat-form-field>
-    </div>
-    
-    <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="name" readonly />
-        </mat-form-field>
-    
-        <mat-form-field appearance="outline">
-            <mat-label>Apellido</mat-label>
-            <input matInput formControlName="surname" readonly/>
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni" readonly />
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Edad</mat-label>
-            <input type="number" matInput formControlName="age" readonly />
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" readonly />
         </mat-form-field>
-        
+
         <mat-form-field appearance="outline">
-            <mat-label>Promedio</mat-label>
-            <input type="number" matInput formControlName="average" readonly />
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="surname" readonly />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field appearance="outline">
+        <mat-label>Edad</mat-label>
+        <input type="number" matInput formControlName="age" readonly />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+        <mat-label>Promedio</mat-label>
+        <input type="number" matInput formControlName="average" readonly />
         </mat-form-field>
     </div>
 </form>
+
+
+<h2>Cursos asociados</h2>
+
+<table mat-table [dataSource]="cursos" class="mat-elevation-z8 full-width-table">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let cursoObj"> {{cursoObj.course.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+        <td mat-cell *matCellDef="let cursoObj"> {{cursoObj.course.code}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="credits">
+        <th mat-header-cell *matHeaderCellDef> Créditos </th>
+        <td mat-cell *matCellDef="let cursoObj"> {{cursoObj.course.credits}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let cursoObj"> {{cursoObj.course.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions" *ngIf="isAdmin">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let cursoObj">
+        <button mat-button color="warn" (click)="removeCourse(cursoObj)">
+            Desinscribir
+        </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<ng-template [ngIf]="cursos.length === 0">
+    <p>Este alumno no está inscrito en ningún curso.</p>
+</ng-template>

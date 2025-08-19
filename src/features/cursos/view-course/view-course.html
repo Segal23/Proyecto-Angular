@@ -1,31 +1,72 @@
 <h2>Detalle del curso</h2>
+
 <form [formGroup]="viewCourse" class="view-form">
 
     <div class="form-row">
-        <mat-form-field appearance="outline" >
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" readonly />
+        <mat-form-field appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="code" readonly />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" readonly />
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Code</mat-label>
-            <input matInput formControlName="code" readonly />
+        <mat-label>Créditos</mat-label>
+        <input type="number" matInput formControlName="credits" readonly />
         </mat-form-field>
-    </div>
 
-    <div class="form-row">
         <mat-form-field appearance="outline">
-            <mat-label>Credits</mat-label>
-            <input type="number" matInput formControlName="credits" readonly/>
-        </mat-form-field>
-    </div>
-    
-    <div class="form-row">
-        <mat-form-field appearance="outline">
-            <mat-label>Description</mat-label>
-            <input matInput formControlName="description" readonly />
+        <mat-label>Descripción</mat-label>
+        <input matInput formControlName="description" readonly />
         </mat-form-field>
     </div>
 </form>
+
+<h2>Alumnos inscriptos</h2>
+
+<table mat-table [dataSource]="alumnos" class="mat-elevation-z8 full-width-table">
+
+    <ng-container matColumnDef="dni">
+        <th mat-header-cell *matHeaderCellDef> DNI </th>
+        <td mat-cell *matCellDef="let alumno"> {{alumno.student.dni}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let alumno"> {{alumno.student.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+        <th mat-header-cell *matHeaderCellDef> Apellido </th>
+        <td mat-cell *matCellDef="let alumno"> {{alumno.student.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Edad </th>
+        <td mat-cell *matCellDef="let alumno"> {{alumno.student.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="average">
+        <th mat-header-cell *matHeaderCellDef> Promedio </th>
+        <td mat-cell *matCellDef="let alumno"> {{alumno.student.average}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions" *ngIf="isAdmin">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let alumno">
+        <button mat-button color="warn" (click)="removeStudent(alumno)">Desinscribir</button>
+        </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<ng-template [ngIf]="alumnos.length === 0">
+    <p>No hay alumnos inscriptos en este curso.</p>
+</ng-template>
