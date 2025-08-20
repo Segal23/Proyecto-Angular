@@ -119,7 +119,7 @@ http://localhost:4200
 Para probar la aplicación, podés usar las siguientes cuentas de ejemplo:
 
 - ✉️ **Username:** admin  
-- 🔑 **Password:** 1234  
+- 🔑 **Password:** Admin123!  
 - 🛠️ **Rol:** admin  
 
 - ✉️ **Username:** jperez  
