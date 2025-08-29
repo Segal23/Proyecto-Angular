@@ -16,41 +16,43 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
   styleUrl: './cursos.css'
 })
 export class Cursos {
-  cursos$!: Observable<Course[]>;
+  cursos$: Observable<Course[]>;
 
-  constructor(private CursosAPI: CursosAPI, private dialog: MatDialog, private snackBar: MatSnackBar) {}
-
-  ngOnInit() {
+  constructor(private CursosAPI: CursosAPI, private dialog: MatDialog, private snackBar: MatSnackBar) {
     this.cursos$ = this.CursosAPI.getCursos();
   }
 
+  ngOnInit() {
+    // La inicialización ya se hace en el constructor
+  }
+
   deleteCourse(course: Course) {
-      this.dialog
-        .open(ConfirmDialog, {
-          data: {
-            message: `¿Estás seguro de que deseas eliminar el curso ${course.name}?`,
-            title: 'Confirmar acción',
-          },
-          panelClass: 'custom-dialog-container'
-        })
-        .afterClosed()
-        .pipe(
-          filter(confirmed => confirmed),
-          switchMap(() => this.CursosAPI.deleteCurso(course)),
-          tap(() => {
-            this.snackBar.open('Curso eliminado correctamente', 'Cerrar', {
-              duration: 2000,
-              horizontalPosition: 'center',
-              verticalPosition: 'bottom',
-              panelClass: ['success-snackbar']
-            });
-          }),
-          switchMap(() => this.CursosAPI.getCursos())
-        )
+    this.dialog
+      .open(ConfirmDialog, {
+        data: {
+          message: `¿Estás seguro de que deseas eliminar el curso ${course.name}?`,
+          title: 'Confirmar acción',
+        },
+        panelClass: 'custom-dialog-container'
+      })
+      .afterClosed()
+      .pipe(
+        filter(confirmed => confirmed),
+        switchMap(() => this.CursosAPI.deleteCurso(course)),
+        tap(() => {
+          this.snackBar.open('Curso eliminado correctamente', 'Cerrar', {
+            duration: 2000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            panelClass: ['success-snackbar']
+          });
+        }),
+        switchMap(() => this.CursosAPI.getCursos())
+      )
         .subscribe(cursos => {
           this.cursos$ = of(cursos);
         });
-    }
+  }
 
   editCourse(course: Course) {
     this.cursos$ = this.CursosAPI.editCurso(course).pipe(

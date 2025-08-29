@@ -14,11 +14,11 @@ export class AuthService {
     private usuariosAPI: UsuariosAPI
   ) {}
 
-  get authState$() {
+  get authState$(): Observable<AuthState> {
     return this.store.select('auth');
   }
 
-  get role$() {
+  get role$(): Observable<string | null> {
     return this.store.select(state => state.auth.role);
   }
 
@@ -46,12 +46,12 @@ export class AuthService {
     );
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('auth');
     this.store.dispatch(logout());
   }
 
-  loadAuthFromStorage() {
+  loadAuthFromStorage(): void {
     const saved = localStorage.getItem('auth');
     if (saved) {
       const authState = JSON.parse(saved);

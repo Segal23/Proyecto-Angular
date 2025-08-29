@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AuthService } from '../../../core/auth/auth-service';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-courses-table',
@@ -21,21 +21,11 @@ export class CoursesTable {
   @Output() deleteEvent = new EventEmitter<Course>();
   @Output() editEvent = new EventEmitter<Course>();
 
-  isAdmin: boolean = false;
   displayedColumns: string[] = ['name', 'code', 'credits', 'description', 'actions'];
-
-  private roleSub: Subscription;
+  role$: Observable<string | null>;
 
   constructor(private router: Router, public authService: AuthService) {
-    this.roleSub = this.authService.role$.subscribe(role => {
-      this.isAdmin = role === 'admin';
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.roleSub) {
-      this.roleSub.unsubscribe();
-    }
+    this.role$ = this.authService.role$;
   }
   
   viewDetails(course: Course) {
@@ -49,6 +39,4 @@ export class CoursesTable {
   editCourse(course: Course) {
     this.router.navigate([`/${RoutePaths.EDIT_COURSE}`, ], { state: { course : course } });
   }
-
 }
-

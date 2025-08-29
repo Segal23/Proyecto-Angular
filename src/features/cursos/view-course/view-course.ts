@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Course, Student, Inscription } from '../../../shared/entities';
+import { Course, Student } from '../../../shared/entities';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,12 +8,14 @@ import { InscripcionesAPI } from '../../inscripciones/inscripciones-api';
 import { AuthService } from '../../../core/auth/auth-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-import { firstValueFrom } from 'rxjs';
+import { Observable, switchMap, tap, catchError, of } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-view-course',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, MatTableModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, CommonModule, MatTableModule, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './view-course.html',
   styleUrls: ['./view-course.css']
 })
@@ -21,8 +23,8 @@ export class ViewCourse implements OnInit {
 
   course!: Course;
   viewCourse!: FormGroup;
-  alumnos: { student: Student; inscriptionId: string }[] = [];
-  isAdmin = false;
+  alumnos$!: Observable<{ student: Student; inscriptionId: string }[]>;
+  role$!: Observable<string | null>;
 
   displayedColumns: string[] = ['dni', 'name', 'surname', 'age', 'average'];
 
@@ -39,7 +41,7 @@ export class ViewCourse implements OnInit {
     }
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     if (!this.course) return;
 
     this.viewCourse = this.fb.group({
@@ -49,24 +51,29 @@ export class ViewCourse implements OnInit {
       description: [this.course.description],
     });
 
-    const role = await firstValueFrom(this.authService.role$);
-    this.isAdmin = role === 'admin';
-    if (this.isAdmin) this.displayedColumns.push('actions');
-
-    this.inscripcionesAPI.getStudentsByCourse(this.course.code).subscribe(alumnos => {
-      this.alumnos = alumnos;
+    this.role$ = this.authService.role$;
+    
+    // Configurar columnas basado en el rol
+    this.role$.subscribe(role => {
+      this.displayedColumns = ['dni', 'name', 'surname', 'age', 'average'];
+      if (role === 'admin') {
+        this.displayedColumns.push('actions');
+      }
     });
+
+    this.alumnos$ = this.inscripcionesAPI.getStudentsByCourse(this.course.code);
   }
 
-  async removeStudent(studentWithInscription: { student: Student; inscriptionId: string }) {
-    try {
-      await firstValueFrom(
-        this.inscripcionesAPI.deleteInscripcion(studentWithInscription.inscriptionId)
-      );
-      this.alumnos = this.alumnos.filter(a => a.inscriptionId !== studentWithInscription.inscriptionId);
-      this.snackBar.open(`Alumno desinscripto: ${studentWithInscription.student.name}`, 'Cerrar', { duration: 2000 });
-    } catch (err) {
-      this.snackBar.open('Error al desinscribir del curso', 'Cerrar', { duration: 2000 });
-    }
-  }  
+  removeStudent(studentWithInscription: { student: Student; inscriptionId: string }) {
+    this.alumnos$ = this.inscripcionesAPI.deleteInscripcion(studentWithInscription.inscriptionId).pipe(
+      tap(() => {
+        this.snackBar.open(`Alumno desinscripto: ${studentWithInscription.student.name}`, 'Cerrar', { duration: 2000 });
+      }),
+      switchMap(() => this.inscripcionesAPI.getStudentsByCourse(this.course.code)),
+      catchError(err => {
+        this.snackBar.open('Error al desinscribir del curso', 'Cerrar', { duration: 2000 });
+        return this.inscripcionesAPI.getStudentsByCourse(this.course.code);
+      })
+    );
+  }
 }

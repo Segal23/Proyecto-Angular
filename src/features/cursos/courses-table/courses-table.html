@@ -26,11 +26,11 @@
         <button (click)="viewDetails(element)" matTooltip="Ver">
             <mat-icon class="view-icon">visibility</mat-icon>
         </button>
-        <button *ngIf="(authService.role$ | async) === 'admin'" (click)="editCourse(element)" matTooltip="Editar">
+        <button *ngIf="(role$ | async) === 'admin'" (click)="editCourse(element)" matTooltip="Editar">
             <mat-icon class="edit-icon">edit</mat-icon>
         </button>  
-        <button *ngIf="(authService.role$ | async) === 'admin'" (click)="deleteCourse(element)" matTooltip="Eliminar">
-          <mat-icon class="delete-icon">delete</mat-icon>
+        <button *ngIf="(role$ | async) === 'admin'" (click)="deleteCourse(element)" matTooltip="Eliminar">
+            <mat-icon class="delete-icon">delete</mat-icon>
         </button>
       </td>
     </ng-container>
