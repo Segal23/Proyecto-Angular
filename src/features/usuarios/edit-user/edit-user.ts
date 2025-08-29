@@ -6,22 +6,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UsuariosAPI } from '../usuarios-api';
 import { RoutePaths } from '../../../shared/routes';
-import { firstValueFrom } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { Observable, switchMap, tap, catchError, of } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-user',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, CommonModule],
   templateUrl: './edit-user.html',
   styleUrl: './edit-user.css'
 })
-
 export class EditUser {
 
   user: User | undefined;
   editUser!: FormGroup;
+  updateResult$: Observable<any> | null = null;
 
   constructor(private router: Router, private fb: FormBuilder, private usuariosAPI: UsuariosAPI, private snackBar: MatSnackBar) {
     const navigation = this.router.getCurrentNavigation();
@@ -50,7 +51,7 @@ export class EditUser {
     });
   }
 
-  async onSubmit() {
+  onSubmit() {
     if (!this.user?.id || !this.validarCampos()) return;
       
     const updatedUser: User = {
@@ -58,29 +59,36 @@ export class EditUser {
       dni: this.user.dni,
       ...this.editUser.value,
     };
-    
-    try {
-      console.log(updatedUser);
-      await firstValueFrom(this.usuariosAPI.editUsuario(updatedUser));
-      const snackBarRef = this.snackBar.open(
-        'Usuario actualizado con éxito ✅',
-        'Cerrar', {
+
+    this.updateResult$ = this.usuariosAPI.editUsuario(updatedUser).pipe(
+      tap(() => {
+        this.snackBar.open(
+          'Usuario actualizado con éxito ✅',
+          'Cerrar', {
+            duration: 2000,
+            horizontalPosition: 'left',
+            verticalPosition: 'bottom',
+            panelClass: ['success-snackbar']
+          }
+        );
+      }),
+      switchMap(() => {
+        this.router.navigate([`/${RoutePaths.USUARIOS}`]);
+        return of(null);
+      }),
+      catchError(error => {
+        this.snackBar.open('Error al actualizar el usurio ❌', 'Cerrar', {
           duration: 2000,
           horizontalPosition: 'left',
           verticalPosition: 'bottom',
           panelClass: ['success-snackbar']
-        }
-      );
-      await firstValueFrom(snackBarRef.afterDismissed());
-      this.router.navigate([`/${RoutePaths.USUARIOS}`]);
-    } catch (error) {
-      this.snackBar.open('Error al actualizar el usurio ❌', 'Cerrar', {
-        duration: 2000,
-        horizontalPosition: 'left',
-        verticalPosition: 'bottom',
-        panelClass: ['success-snackbar']
-      });
-    }
+        });
+        return of(null);
+      })
+    );
+
+    // Subscribimos para ejecutar el observable
+    this.updateResult$.subscribe();
   }
 
   mostrarError(mensaje: string) {

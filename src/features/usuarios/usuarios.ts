@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsuariosAPI } from './usuarios-api';
 import { User } from '../../shared/entities';
 import { filter, Observable, of, switchMap, tap } from 'rxjs';
@@ -16,12 +16,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './usuarios.css'
 })
 export class Usuarios {
-  usuarios$!: Observable<User[]>;
+  usuarios$: Observable<User[]>;
 
-  constructor(private UsuariosAPI: UsuariosAPI, private dialog: MatDialog, private snackBar: MatSnackBar) {}
+  constructor(private UsuariosAPI: UsuariosAPI, private dialog: MatDialog, private snackBar: MatSnackBar) {
+    this.usuarios$ = this.UsuariosAPI.getUsuarios();
+  }
 
   ngOnInit() {
-    this.usuarios$ = this.UsuariosAPI.getUsuarios();
+    // La inicialización ya se hace en el constructor
   }
 
   deleteUser(user: User) {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../../shared/entities';
 import { Router } from '@angular/router';
-import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -33,9 +33,9 @@ export class ViewUser {
       email: [this.user?.email],
       username: [this.user?.username],
       password: [this.user?.password],
-      role: [this.user?.role] ,
-      isActive: [this.user?.isActive] ,
-      createdAt: [this.user?.createdAt] ,
+      role: [this.user?.role],
+      isActive: [this.user?.isActive],
+      createdAt: [this.user?.createdAt],
     });
   }
-} 
+}
