@@ -11,3 +11,8 @@ export const selectRole = createSelector(
     selectAuth,
     (auth) => auth.role
 );
+
+export const selectUser = createSelector(
+    selectAuth,
+    (auth) => auth.user
+);

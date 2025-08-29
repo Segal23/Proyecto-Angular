@@ -13,5 +13,3 @@ export const authReducer = createReducer(
     on(loginSuccess, (state, { user, role }) => ({ ...state, user, role })),
     on(logout, () => initialState)
 );
-export { loginSuccess, logout };
-

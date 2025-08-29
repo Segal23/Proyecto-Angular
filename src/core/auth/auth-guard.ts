@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthState } from './auth.reducer';
+import { RoutePaths } from '../../shared/routes';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -12,7 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> {
     return this.store.select('auth').pipe(
       take(1),
-      map(auth => auth.user ? true : this.router.createUrlTree(['/login']))
+      map(auth => auth.user ? true : this.router.createUrlTree([`/${RoutePaths.LOGIN}`]))
     );
   }
 }
