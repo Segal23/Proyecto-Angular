@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialog } from '../../shared/components/confirm-dialog/confirm-dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthService } from '../../core/auth/auth-service';
 
 @Component({
   selector: 'app-alumnos',
@@ -17,8 +18,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class Alumnos {
   alumnos$!: Observable<Student[]>;
+  userRole$: Observable<string | null>;
 
-  constructor(private AlumnosAPI: AlumnosAPI, private dialog: MatDialog, private snackBar: MatSnackBar) {}
+  constructor(
+    private AlumnosAPI: AlumnosAPI, 
+    private dialog: MatDialog, 
+    private snackBar: MatSnackBar,
+    private authService: AuthService
+  ) {
+    this.userRole$ = this.authService.role$;
+  }
 
   ngOnInit() {
     this.alumnos$ = this.AlumnosAPI.getAlumnos();

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Student } from '../../../shared/entities';
 import {MatTableModule} from '@angular/material/table';
 import { FullnamePipe } from '../../../shared/pipes/fullname-pipe';
@@ -6,9 +6,7 @@ import { Router } from '@angular/router';
 import { RoutePaths } from '../../../shared/routes';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AuthService } from '../../../core/auth/auth-service';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-students-table',
@@ -16,26 +14,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './students-table.html',
   styleUrls: ['./students-table.css'],
 })
-export class StudentsTable implements OnDestroy {
+export class StudentsTable {
   @Input() students: Student[] = [];
+  @Input() userRole: string | null = null;
   @Output() deleteEvent = new EventEmitter<Student>();
   @Output() editEvent = new EventEmitter<Student>();
 
-  isAdmin: boolean = false;
   displayedColumns: string[] = ['fullname', 'age', 'dni', 'average', 'actions'];
 
-  private roleSub: Subscription;
+  constructor(private router: Router) {}
 
-  constructor(private router: Router, public authService: AuthService) {
-    this.roleSub = this.authService.role$.subscribe(role => {
-      this.isAdmin = role === 'admin';
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.roleSub) {
-      this.roleSub.unsubscribe();
-    }
+  get isAdmin(): boolean {
+    return this.userRole === 'admin';
   }
 
   viewDetails(student: Student) {

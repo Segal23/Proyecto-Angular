@@ -1,5 +1,10 @@
 <div *ngIf="alumnos$ | async as alumnos; else loading">
-    <app-students-table (editEvent)="editStudent($event)" (deleteEvent)="deleteStudent($event)" [students]="alumnos"></app-students-table>
+    <app-students-table 
+        (editEvent)="editStudent($event)" 
+        (deleteEvent)="deleteStudent($event)" 
+        [students]="alumnos"
+        [userRole]="userRole$ | async">
+    </app-students-table>
 </div>
 
 <ng-template #loading>
