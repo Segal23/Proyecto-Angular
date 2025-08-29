@@ -1,40 +1,40 @@
 <table mat-table [dataSource]="inscriptions" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="studentDNI">
-      <th mat-header-cell *matHeaderCellDef>Student DNI</th>
-      <td mat-cell *matCellDef="let element"> {{element.studentDNI}} </td>
-    </ng-container>
+  <ng-container matColumnDef="studentDNI">
+    <th mat-header-cell *matHeaderCellDef>Student DNI</th>
+    <td mat-cell *matCellDef="let element"> {{element.studentDNI}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="courseCode">
-      <th mat-header-cell *matHeaderCellDef> Course Code </th>
-      <td mat-cell *matCellDef="let element"> {{element.courseCode}} </td>
-    </ng-container>
+  <ng-container matColumnDef="courseCode">
+    <th mat-header-cell *matHeaderCellDef> Course Code </th>
+    <td mat-cell *matCellDef="let element"> {{element.courseCode}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="grade">
-      <th mat-header-cell *matHeaderCellDef>Grade</th>
-      <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
-    </ng-container>
+  <ng-container matColumnDef="grade">
+    <th mat-header-cell *matHeaderCellDef>Grade</th>
+    <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-    </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
-      <td mat-cell *matCellDef="let element"> {{element.actions}} 
-        <button (click)="viewDetails(element)" matTooltip="Ver">
-            <mat-icon class="view-icon">visibility</mat-icon>
-        </button>
-        <button *ngIf="(authService.role$ | async) === 'admin'" (click)="editInscription(element)" matTooltip="Editar">
-            <mat-icon class="edit-icon">edit</mat-icon>
-        </button>  
-        <button *ngIf="(authService.role$ | async) === 'admin'" (click)="deleteInscription(element)" matTooltip="Eliminar">
-          <mat-icon class="delete-icon">delete</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element"> {{element.actions}} 
+      <button (click)="viewDetails(element)" matTooltip="Ver">
+          <mat-icon class="view-icon">visibility</mat-icon>
+      </button>
+      <button *ngIf="isAdmin" (click)="editInscription(element)" matTooltip="Editar">
+          <mat-icon class="edit-icon">edit</mat-icon>
+      </button>  
+      <button *ngIf="isAdmin" (click)="deleteInscription(element)" matTooltip="Eliminar">
+        <mat-icon class="delete-icon">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

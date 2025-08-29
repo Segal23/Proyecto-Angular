@@ -5,9 +5,7 @@ import { Router } from '@angular/router';
 import { RoutePaths } from '../../../shared/routes';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AuthService } from '../../../core/auth/auth-service';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inscriptions-table',
@@ -18,24 +16,16 @@ import { Subscription } from 'rxjs';
 export class InscriptionsTable {
 
   @Input() inscriptions: Inscription[] = [];
+  @Input() userRole: string | null = null;
   @Output() deleteEvent = new EventEmitter<Inscription>();
   @Output() editEvent = new EventEmitter<Inscription>();
 
-  isAdmin: boolean = false;
   displayedColumns: string[] = ['studentDNI', 'courseCode', 'grade', 'status', 'actions'];
 
-  private roleSub: Subscription;
-  
-  constructor(private router: Router, public authService: AuthService) {
-    this.roleSub = this.authService.role$.subscribe(role => {
-      this.isAdmin = role === 'admin';
-    });
-  }
+  constructor(private router: Router) {}
 
-  ngOnDestroy() {
-    if (this.roleSub) {
-      this.roleSub.unsubscribe();
-    }
+  get isAdmin(): boolean {
+    return this.userRole === 'admin';
   }
 
   viewDetails(inscription: Inscription) {

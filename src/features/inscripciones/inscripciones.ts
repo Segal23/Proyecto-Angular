@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialog } from '../../shared/components/confirm-dialog/confirm-dialog';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { AuthService } from '../../core/auth/auth-service';
 
 @Component({
   selector: 'app-inscripciones',
@@ -18,8 +19,16 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 export class Inscripciones {
 
   inscripciones$!: Observable<Inscription[]>;
+  userRole$: Observable<string | null>;
 
-  constructor(private InscripcionesAPI: InscripcionesAPI, private dialog: MatDialog, private snackBar: MatSnackBar) {}
+  constructor(
+    private InscripcionesAPI: InscripcionesAPI, 
+    private dialog: MatDialog, 
+    private snackBar: MatSnackBar,
+    private authService: AuthService
+  ) {
+    this.userRole$ = this.authService.role$;
+  }
 
   ngOnInit() {
     this.inscripciones$ = this.InscripcionesAPI.getInscripciones();
